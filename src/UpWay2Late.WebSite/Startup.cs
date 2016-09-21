@@ -29,6 +29,7 @@ namespace UpWay2Late.WebSite
         {
             // Add framework services.
             services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +39,9 @@ namespace UpWay2Late.WebSite
             loggerFactory.AddDebug();
 
             app.UseMvc();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }
