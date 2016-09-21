@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let newsItem of newsItems">
-                    <td>{{newsItem.date}}</td>
+                    <td>{{utilsService.dateFrmt(newsItem.date, 'mmm d, yyyy')}}</td>
                     <td>{{newsItem.text}}</td>
                 </tr>
             </tbody>

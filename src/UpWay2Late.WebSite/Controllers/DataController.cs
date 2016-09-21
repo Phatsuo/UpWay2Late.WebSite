@@ -39,10 +39,28 @@ namespace UpWay2Late.WebSite.Controllers
             new News { Date = DateTime.Parse("5/10/2011"), Text = "WinRoboCopy 1.0 is now available for download!" }
         };
 
+        private static Contact[] Contacts = new[] {
+            new Contact { Name = "General Stuff", Email = "contact@upway2late.com" },
+            new Contact { Name = "Support", Email = "support@upway2late.com" },
+            new Contact { Name = "Pick Em Leagues", Email = "contact@pickemleagues.com" },
+            new Contact { Name = "WinRoboCopy", Email = "winrobocopy@upway2late.com" },
+            new Contact { Name = "WinLaunch", Email = "winlaunch@upway2late.com" },
+            new Contact { Name = "Google Chrome Delicious Extension", Email = "gcde@upway2late.com" },
+            new Contact { Name = "Google Chrome Pinboard Extension", Email = "gcpe@upway2late.com" },
+            new Contact { Name = "Google It!", Email = "googleit@upway2late.com" },
+            new Contact { Name = "Awesome Window & Tab Manager", Email = "awtm@upway2late.com" }
+        };
+
         [HttpGet("api/[controller]/[action]")]
         public News[] GetNews()
         {
             return News;
+        }
+
+        [HttpGet("api/[controller]/[action]")]
+        public Contact[] GetContacts()
+        {
+            return Contacts;
         }
     }
 }

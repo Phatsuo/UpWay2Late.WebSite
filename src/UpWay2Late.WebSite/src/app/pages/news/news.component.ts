@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DataService } from '../../services/data.service';
+import { UtilsService } from '../../services/utils.service';
 
 import { INews } from '../../models/news';
 
@@ -13,7 +14,10 @@ export class NewsComponent implements OnInit {
 
     public newsItems: Array<INews>;
 
-    constructor(private dataService: DataService) { }
+    constructor(
+        private dataService: DataService,
+        private utilsService: UtilsService
+    ) { }
 
     ngOnInit() {
         this.dataService.getNews()
@@ -21,5 +25,4 @@ export class NewsComponent implements OnInit {
                 this.newsItems = data;
             });
     }
-
 }

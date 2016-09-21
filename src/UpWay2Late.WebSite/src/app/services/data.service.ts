@@ -3,6 +3,7 @@ import { Http, Headers } from '@angular/http'
 
 import { Observable } from 'rxjs/Observable';
 
+import { IContact } from '../models/contact';
 import { INews } from '../models/news';
 
 @Injectable()
@@ -20,6 +21,16 @@ export class DataService {
                 return responseData.json();
             })
             .map((data: Array<INews>) => {
+                return data;
+            });
+    }
+
+    getContacts(): Observable<Array<IContact>> {
+        return this._http.get('/api/data/getContacts', { headers: this.headers })
+            .map((responseData) => {
+                return responseData.json();
+            })
+            .map((data: Array<IContact>) => {
                 return data;
             });
     }
