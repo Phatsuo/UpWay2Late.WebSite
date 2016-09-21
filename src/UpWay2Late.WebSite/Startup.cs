@@ -38,6 +38,8 @@ namespace UpWay2Late.WebSite
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseDeveloperExceptionPage();
+
             app.UseMvc();
 
             app.UseDefaultFiles();

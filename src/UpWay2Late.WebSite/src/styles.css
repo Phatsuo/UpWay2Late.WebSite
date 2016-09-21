@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+.brand-font {
+    color: #005ccd;
+    font-weight: bolder;
+}
+
+.twitter-li {
+    padding-top: 11px;    
+}
+
+.lined-grid div.row { 
+  border: 1px solid;
+  border-bottom: 0px;
+}
+
+.lined-grid div.row:last-child {
+  border-bottom: 1px solid;
+}
