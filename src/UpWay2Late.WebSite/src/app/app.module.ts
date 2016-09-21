@@ -16,6 +16,7 @@ import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
 import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-manager.component';
 import { DeliciousExtensionComponent } from './pages/projects/delicious-extension/delicious-extension.component';
 import { GoogleExtensionComponent } from './pages/projects/google-extension/google-extension.component';
+import { PickEmLeaguesComponent } from './pages/projects/pick-em-leagues/pick-em-leagues.component';
 import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
 import { WindowAndTabExtensionComponent } from './pages/projects/window-and-tab-extension/window-and-tab-extension.component';
 import { WinLaunchComponent } from './pages/projects/win-launch/win-launch.component';
@@ -27,6 +28,7 @@ import { WinRoboCopyResourcesComponent } from './pages/projects/win-robo-copy/wi
 
 import { ExtensionHeaderComponent } from './components/extension-header/extension-header.component';
 import { KendoImagePreviewComponent } from './components/kendo-image-preview/kendo-image-preview.component';
+import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 
 import { DataService } from './services/data.service';
 import { UtilsService } from './services/utils.service';
@@ -36,7 +38,6 @@ import { appRoutes } from './routes';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import 'rxjs/add/operator/toPromise';
         CookieManagerComponent,
         ExtensionHeaderComponent,
         KendoImagePreviewComponent,
+        ResponsiveImageComponent,
         DeliciousExtensionComponent,
         GoogleExtensionComponent,
         PinboardExtensionComponent,
@@ -62,7 +64,8 @@ import 'rxjs/add/operator/toPromise';
         WinRoboCopyScheduleComponent,
         WinRoboCopyResourcesComponent,
         WinRoboCopyCompactViewComponent,
-        WinRoboCopyCompactViewComponent
+        WinRoboCopyCompactViewComponent,
+        PickEmLeaguesComponent
     ],
     imports: [
         BrowserModule,

@@ -11,6 +11,7 @@ import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
 import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-manager.component';
 import { DeliciousExtensionComponent } from './pages/projects/delicious-extension/delicious-extension.component';
 import { GoogleExtensionComponent } from './pages/projects/google-extension/google-extension.component';
+import { PickEmLeaguesComponent } from './pages/projects/pick-em-leagues/pick-em-leagues.component';
 import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
 import { WindowAndTabExtensionComponent } from './pages/projects/window-and-tab-extension/window-and-tab-extension.component';
 import { WinLaunchComponent } from './pages/projects/win-launch/win-launch.component';
@@ -45,6 +46,10 @@ export const appRoutes: Routes = [
     {
         path: 'projects/chrome-google-search-extension',
         component: GoogleExtensionComponent
+    },
+    {
+        path: 'projects/pick-em-leagues',
+        component: PickEmLeaguesComponent
     },
     {
         path: 'projects/chrome-pinboard-extension-bookmark-sync',
