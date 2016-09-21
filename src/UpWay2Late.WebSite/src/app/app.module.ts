@@ -12,6 +12,12 @@ import { DownloadsComponent } from './pages/downloads/downloads.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component'
 
+import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
+import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-manager.component';
+
+import { ExtensionHeaderComponent } from './components/extension-header/extension-header.component';
+import { KendoImagePreviewComponent } from './components/kendo-image-preview/kendo-image-preview.component';
+
 import { DataService } from './services/data.service';
 import { UtilsService } from './services/utils.service';
 
@@ -21,26 +27,29 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    NewsComponent,
-    HomeComponent,
-    ProjectsComponent,
-    DownloadsComponent,
-    ContactComponent,
-    PrivacyComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(appRoutes, { useHash: true })
-  ],
-  providers: [
-      DataService,
-      UtilsService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NewsComponent,
+        HomeComponent,
+        ProjectsComponent,
+        DownloadsComponent,
+        ContactComponent,
+        PrivacyComponent,
+        ButtonsComponent,
+        CookieManagerComponent, CookieManagerComponent, ExtensionHeaderComponent, KendoImagePreviewComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        RouterModule.forRoot(appRoutes, { useHash: true })
+    ],
+    providers: [
+        DataService,
+        UtilsService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

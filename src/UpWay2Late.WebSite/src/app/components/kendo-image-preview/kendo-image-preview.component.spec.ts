@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { DownloadsComponent } from './downloads.component';
+import { KendoImagePreviewComponent } from './kendo-image-preview.component';
 
-describe('Component: Downloads', () => {
+describe('Component: KendoImagePreview', () => {
   it('should create an instance', () => {
-    let component = new DownloadsComponent(null);
+    let component = new KendoImagePreviewComponent(null);
     expect(component).toBeTruthy();
   });
 });

@@ -7,6 +7,9 @@ import { DownloadsComponent } from './pages/downloads/downloads.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component'
 
+import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
+import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-manager.component';
+
 export const appRoutes: Routes = [
     {
         path: '',
@@ -18,8 +21,12 @@ export const appRoutes: Routes = [
         component: NewsComponent
     },
     {
-        path: 'projects',
-        component: ProjectsComponent
+        path: 'projects/buttons-project',
+        component: ButtonsComponent
+    },
+    {
+        path: 'projects/awesome-cookie-manager',
+        component: CookieManagerComponent
     },
     {
         path: 'downloads',

@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { DownloadsComponent } from './downloads.component';
+import { CookieManagerComponent } from './cookie-manager.component';
 
-describe('Component: Downloads', () => {
+describe('Component: CookieManager', () => {
   it('should create an instance', () => {
-    let component = new DownloadsComponent(null);
+    let component = new CookieManagerComponent();
     expect(component).toBeTruthy();
   });
 });

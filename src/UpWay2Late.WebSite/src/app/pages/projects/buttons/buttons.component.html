@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Buttons Project</h3>
+    </div>
+    <div class="panel-body">
+
+        <app-extension-header extensionId="bcmfandagknmpnambbppcpgclkccgigb"
+                              image="/assets/img/buttons/barButton_128.png"></app-extension-header>
+
+        <p>
+            The buttons project is a collection of 12 Google Chrome Extensions, 11 of which are simple buttons, and the final extension is a button bar combination of the other 11.
+        </p>
+
+        <p>
+            The <a href="https://chrome.google.com/webstore/detail/bcmfandagknmpnambbppcpgclkccgigb?hl=en-US" target="_blank">Awesome Button Bar</a> contains all buttons and all options, and adds the option of showing or hiding each button.
+        </p>
+
+        <p>
+            <img class="img-responsive" src="/assets/img/buttons/bar.png" />
+        </p>
+
+        <p>
+            Each button is described here:
+        </p>
+
+        <table class="table table-bordered table-striped">
+            <tr *ngFor="let extension of extensions">
+                <td>
+                    <a href="{{extension.url}}" target="_blank">
+                        <img class="img-responsive" src="{{extension.image}}" />
+                    </a>
+                </td>
+                <td>
+                    <b>{{extension.name}}</b><br /><br />
+                    <a href="{{extension.url}}" target="_blank">Install</a>
+                </td>
+                <td>
+                    <div *ngFor="let line of extension.text">
+                        {{line}}<br /><br />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
