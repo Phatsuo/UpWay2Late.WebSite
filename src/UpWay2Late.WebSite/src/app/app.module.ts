@@ -14,6 +14,9 @@ import { PrivacyComponent } from './pages/privacy/privacy.component'
 
 import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
 import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-manager.component';
+import { DeliciousExtensionComponent } from './pages/projects/delicious-extension/delicious-extension.component';
+import { GoogleExtensionComponent } from './pages/projects/google-extension/google-extension.component';
+import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
 
 import { ExtensionHeaderComponent } from './components/extension-header/extension-header.component';
 import { KendoImagePreviewComponent } from './components/kendo-image-preview/kendo-image-preview.component';
@@ -28,6 +31,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -38,7 +42,13 @@ import 'rxjs/add/operator/toPromise';
         ContactComponent,
         PrivacyComponent,
         ButtonsComponent,
-        CookieManagerComponent, CookieManagerComponent, ExtensionHeaderComponent, KendoImagePreviewComponent
+        CookieManagerComponent,
+        CookieManagerComponent,
+        ExtensionHeaderComponent,
+        KendoImagePreviewComponent,
+        DeliciousExtensionComponent,
+        GoogleExtensionComponent,
+        PinboardExtensionComponent
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,110 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Chrome Pinboard Extension - Bookmark Sync</h3>
+    </div>
+    <div class="panel-body">
+
+        <app-extension-header extensionId="ilbhogiegeofdbmkbbbanjdggcoonbpd"
+                              image="/assets/img/pinboard/icon_128_not_transparent.png"></app-extension-header>
+
+        <p>
+            <b>URGENT: Chrome 19 broke the login. Extension version 1.0.1.0 fixes this problem.</b>
+        </p>
+
+        <p>
+            Do you want your Pinboard bookmarks replicated to your Google Chrome Bookmark Bar? You're in the right place.<br />
+            There are plenty of other extensions that do a great job of allowing you to tag pages and edit tags. We might add these features in the future... but for now this extension is all about the Google Chrome Bookmark Bar.
+        </p>
+
+        <p>
+            This extension does a one-way (two-way optional), on-demand copy from your Pinboard bookmarks to the Google Chrome Bookmark Bar. This is done on a tag by tag basis - you select which tags to copy. Let's take a peek:
+        </p>
+
+        <p>
+            When you first run the extension, it's going to ask you to log in.
+        </p>
+
+        <p>
+            <img class="img-responsive" src="/assets/img/pinboard/p_login_95.png" />
+        </p>
+
+        <p>
+            So let's log in and move along:
+        </p>
+
+        <p>
+            <img src="/assets/img/pinboard/p_logged-in_95.png" />
+        </p>
+
+        <p>
+            At this point you can check the tags you want to replicate.
+        </p>
+
+        <p>
+            Depending on the bookmark folder options selected, bookmarks are sync'd from Pinboard tag to Google Chrome bookmark bar folder:
+        </p>
+
+        <table>
+            <tr>
+                <td>Bookmark bar option:</td>
+                <td>Single folder on bookmark bar option:</td>
+            </tr>
+            <tr>
+                <td><img class="img-responsive" src="/assets/img/delicious/menu-a.png" /></td>
+                <td><img class="img-responsive" src="/assets/img/delicious/menu-b.png" /></td>
+            </tr>
+        </table>
+
+        <p>
+            "Delete bookmarks that have been deleted from Pinboard." - when this option is selected, bookmarks that have been deleted from Pinboard will be deleted from Google Chrome during the next sync.
+        </p>
+
+        <p>
+            "Sync bookmarks created in Chrome back to Pinboard" - when this option is selected, bookmarks created in Google Chrome (but only in the Pinboard folders) will be created back in Pinboard during the next sync. They are created as either public or private as indicated by the option selection.
+        </p>
+
+        <p>
+            "Auto Sync": select an auto sync period and the extension will sync on a regular basis. This feature requires a saved username and password.
+        </p>
+
+        <h3>Errors and Warnings</h3>
+
+        <p>
+            <img class="img-responsive" src="/assets/img/delicious/quotawarning-2.png" />
+        </p>
+
+        <p>
+            "Error: could not create bookmark (or other action). This request exceeds available quota."
+        </p>
+
+        <p>
+            This message is from Google Chrome. Google Chrome places some limits on how many bookmarks actions (create, edit, move, delete) an extension can do within certain time periods. One should not get this during normal usage of the extension... but it is possible when doing a lot of deleting and re-creating of bookmarks.
+        </p>
+
+        <p>
+            <img class="img-responsive" src="/assets/img/delicious/error999.png" />
+        </p>
+
+        <p>
+            "Error from Pinboard: 999 Unable to process request at this time - error 999"
+        </p>
+
+        <p>
+            This message is from the Pinboard server. Pinboard places some limits on how many service calls a user can make to the Pinboard bookmark service within certain limits. Again here, one should not get this during normal usage of the extension.
+        </p>
+
+        <p>
+            Note on saving passwords: If you choose to save your password, you are going to see a warning about the risks involved with saving your password - even though it is stored in an encrypted format. That same warning can be viewed anytime by clicking the 'info' link there. Save your password at your own risk. Definitely do not save your password on a public computer.
+        </p>
+
+        <h3>Credits</h3>
+
+        <p>
+            JQuery, JQuery UI, Jquery Cookie Plugin, FamFamFam Silk Icons, Stanford Javascript Crypto Library
+        </p>
+
+        <p>
+            Fam Fam Fam Icons: <a href="http://www.famfamfam.com/lab/icons/silk/">http://www.famfamfam.com/lab/icons/silk/</a>
+        </p>
+    </div>
+</div>

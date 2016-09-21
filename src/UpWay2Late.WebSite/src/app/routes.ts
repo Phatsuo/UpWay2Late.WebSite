@@ -9,6 +9,9 @@ import { PrivacyComponent } from './pages/privacy/privacy.component'
 
 import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
 import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-manager.component';
+import { DeliciousExtensionComponent } from './pages/projects/delicious-extension/delicious-extension.component';
+import { GoogleExtensionComponent } from './pages/projects/google-extension/google-extension.component';
+import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
 
 export const appRoutes: Routes = [
     {
@@ -27,6 +30,18 @@ export const appRoutes: Routes = [
     {
         path: 'projects/awesome-cookie-manager',
         component: CookieManagerComponent
+    },
+    {
+        path: 'projects/chrome-delicious-extension-bookmark-sync',
+        component: DeliciousExtensionComponent
+    },
+    {
+        path: 'projects/chrome-google-search-extension',
+        component: GoogleExtensionComponent
+    },
+    {
+        path: 'projects/chrome-pinboard-extension-bookmark-sync',
+        component: PinboardExtensionComponent
     },
     {
         path: 'downloads',
