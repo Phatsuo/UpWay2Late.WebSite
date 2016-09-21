@@ -14,6 +14,11 @@ import { GoogleExtensionComponent } from './pages/projects/google-extension/goog
 import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
 import { WindowAndTabExtensionComponent } from './pages/projects/window-and-tab-extension/window-and-tab-extension.component';
 import { WinLaunchComponent } from './pages/projects/win-launch/win-launch.component';
+import { WinRoboCopyComponent } from './pages/projects/win-robo-copy/win-robo-copy.component';
+import { WinRoboCopyCompactViewComponent } from './pages/projects/win-robo-copy/win-robo-copy-compact-view/win-robo-copy-compact-view.component';
+import { WinRoboCopyScriptsComponent } from './pages/projects/win-robo-copy/win-robo-copy-scripts/win-robo-copy-scripts.component';
+import { WinRoboCopyScheduleComponent } from './pages/projects/win-robo-copy/win-robo-copy-schedule/win-robo-copy-schedule.component';
+import { WinRoboCopyResourcesComponent } from './pages/projects/win-robo-copy/win-robo-copy-resources/win-robo-copy-resources.component';
 
 export const appRoutes: Routes = [
     {
@@ -52,6 +57,26 @@ export const appRoutes: Routes = [
     {
         path: 'projects/winlaunch',
         component: WinLaunchComponent
+    },
+    {
+        path: 'projects/winrobocopy',
+        component: WinRoboCopyComponent
+    },
+    {
+        path: 'projects/winrobocopy/compact-view',
+        component: WinRoboCopyCompactViewComponent
+    },
+    {
+        path: 'projects/winrobocopy/scripts',
+        component: WinRoboCopyScriptsComponent
+    },
+    {
+        path: 'projects/winrobocopy/schedule-robocopy-job',
+        component: WinRoboCopyScheduleComponent
+    },
+    {
+        path: 'projects/winrobocopy/robocopy-resources',
+        component: WinRoboCopyResourcesComponent
     },
     {
         path: 'downloads',

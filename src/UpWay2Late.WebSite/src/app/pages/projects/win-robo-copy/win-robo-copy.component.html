@@ -1,0 +1,212 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">WinRoboCopy</h3>
+    </div>
+    <div class="panel-body">
+
+        <p><img src="/assets/img/winrobocopy/robot.png" /></p>
+
+        <p>WinRoboCopy is a GUI front end for RoboCopy.</p>
+
+        <p>Download: <a routerLink='/downloads'>Downloads</a> </p>
+
+        <p>RoboCopy is a command line file copy utility for Windows. more info: <a href="http://en.wikipedia.org/wiki/Robocopy">http://en.wikipedia.org/wiki/Robocopy</a> </p>
+
+        <p>The main window:</p>
+
+        <p><img class="img-responsive" src="/assets/img/winrobocopy/mainwindow.png" /></p>
+
+        <p>
+            Alternate (original) compact view is still available. Example: <a routerLink='/projects/winrobocopy/compact-view'>Compact View</a>
+        </p>
+
+        <p>
+            The 'Name' dropdown at the top of the form is for saving RoboCopy settings for reuse. Using a 'Name' is optional.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/name.png" />
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/save.png" /> ... Saves the current RoboCopy settings as a RoboJob with the specified Name.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/delete.png" />... Deletes the currently selected RoboJob.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/clear.png" /> ... Clears all form fields.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/open.png" />... Opens the Scripts window. Example: <a routerLink='/projects/winrobocopy/scripts'>Scripts</a>
+        </p>
+
+        <p>
+            The next section is for specifying the various RoboCopy settings. All elements feature tool tips. All file and folder text boxes support drag-n-drop from Windows Explorer.
+        </p>
+
+        <p><img src="/assets/img/winrobocopy/files.png" /></p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/browse.png" /> ... Browse to a folder.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/open.png" /> ... Open the selected folder.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/expand_button.png" /> ... Expand the options panel.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/robocopy_button.png" />... Runs the RoboCopy job immediately.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/stop_button.png" />... Stops a running RoboCopy job.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/save_button.png" /> ... Save the RoboCopy job to disk as a command file (for execution later).
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/schedule_button.png" /> ... Schedule a RoboCopy job to run later in Windows Task Scheduler. Example: <a routerLink='/projects/winrobocopy/schedule-robocopy-job'>Schedule RoboCopy Job</a>
+        </p>
+
+        <p>
+            The command section always shows the current RoboCopy command.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/command.png" />
+        </p>
+
+        <p>
+            The progress bar area shows the current directory and file being copied. The progress bars display the current progress percentage for each item.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/progress-bars.png" />
+        </p>
+
+        <p>
+            The log/output area shows all the RoboCopy output. This output is also logged to disk.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/output.png" />
+        </p>
+
+        <p>
+            RoboCopy help can be viewed in a separate window.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/helpwindow.png" />
+        </p>
+
+        <p>
+            The RoboCopy version you want to use can also be specified.
+        </p>
+
+        <p>
+            <img src="/assets/img/winrobocopy/robo-location.png" />
+        </p>
+
+        <p>
+            The RoboCopy location can also be overridden in a config file by creating a file named WinRoboCopy.exe.config in the same directory where WinRoboCopy.exe resides. The contents of the file should be as follows:
+        </p>
+
+        <p>
+            &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />
+            &lt;configuration&gt;<br />
+            &lt;appSettings&gt; <br />
+            &lt;add key=&quot;RoboCopyLocationOverride&quot; value=&quot;C:\RoboCopy\RoboCopy.exe&quot; /&gt;<br />
+            &lt;/appSettings&gt;<br />
+            &lt;/configuration&gt;<br />
+        </p>
+
+        <p>
+            The path can also be a relative path.
+        </p>
+
+        <h4>
+            Specifying the WinRoboCopyJobs.xml location
+        </h4>
+
+        <p>
+            Normally the WinRoboCopyJobs.xml configuration file is stored in a location specific to the user. For example:
+        </p>
+
+        <p>
+            C:\Users\&lt;UserName&gt;\AppData\Local\UpWay2Late\WinRoboCopy\Config
+        </p>
+
+        <p>
+            This location can be overridden by creating a file named WinRoboCopy.exe.config in the same directory where WinRoboCopy.exe resides. The contents of the file should be as follows:
+        </p>
+
+        <p>
+            &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />
+            &lt;configuration&gt;<br />
+            &lt;appSettings&gt;<br />
+            &lt;add key=&quot;ConfigFolderOverride&quot; value=&quot;C:\Temp\WinRoboCopy&quot; /&gt;<br />
+            &lt;/appSettings&gt;<br />
+            &lt;/configuration&gt;<br />
+        </p>
+
+        <p>
+            The path can also be a relative path.
+        </p>
+
+        <h4>
+            Versions
+        </h4>
+
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Setup</th>
+                    <th>Revision</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let version of versions">
+                    <td>{{version.version}}</td>
+                    <td>{{version.filename}}</td>
+                    <td>{{version.revision}}</td>
+                    <td>{{utilsService.dateFrmt(version.date, 'mmm d, yyyy')}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+
+        <div class="container-fluid">
+            <div class="row" *ngFor="let version of versions">
+                <div class="col-md-12 text-left">
+                    <b>{{version.version}} ({{utilsService.dateFrmt(version.date, 'mmm d, yyyy')}})</b><br />
+                    <div *ngFor="let line of version.text">
+                        {{line}}<br />
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <img src="/assets/img/winrobocopy/softpedia_clean_award_f.gif" />
+        </p>
+
+        <p>
+            Other robocopy <a routerLink='/projects/winrobocopy/robocopy-resources'>Resources</a>.
+        </p>
+    </div>
+</div>

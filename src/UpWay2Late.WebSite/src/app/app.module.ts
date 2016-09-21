@@ -19,6 +19,11 @@ import { GoogleExtensionComponent } from './pages/projects/google-extension/goog
 import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
 import { WindowAndTabExtensionComponent } from './pages/projects/window-and-tab-extension/window-and-tab-extension.component';
 import { WinLaunchComponent } from './pages/projects/win-launch/win-launch.component';
+import { WinRoboCopyComponent } from './pages/projects/win-robo-copy/win-robo-copy.component';
+import { WinRoboCopyCompactViewComponent } from './pages/projects/win-robo-copy/win-robo-copy-compact-view/win-robo-copy-compact-view.component';
+import { WinRoboCopyScriptsComponent } from './pages/projects/win-robo-copy/win-robo-copy-scripts/win-robo-copy-scripts.component';
+import { WinRoboCopyScheduleComponent } from './pages/projects/win-robo-copy/win-robo-copy-schedule/win-robo-copy-schedule.component';
+import { WinRoboCopyResourcesComponent } from './pages/projects/win-robo-copy/win-robo-copy-resources/win-robo-copy-resources.component';
 
 import { ExtensionHeaderComponent } from './components/extension-header/extension-header.component';
 import { KendoImagePreviewComponent } from './components/kendo-image-preview/kendo-image-preview.component';
@@ -31,6 +36,7 @@ import { appRoutes } from './routes';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+
 
 @NgModule({
     declarations: [
@@ -48,7 +54,15 @@ import 'rxjs/add/operator/toPromise';
         KendoImagePreviewComponent,
         DeliciousExtensionComponent,
         GoogleExtensionComponent,
-        PinboardExtensionComponent, WindowAndTabExtensionComponent, WinLaunchComponent
+        PinboardExtensionComponent,
+        WindowAndTabExtensionComponent,
+        WinLaunchComponent,
+        WinRoboCopyComponent,
+        WinRoboCopyScriptsComponent,
+        WinRoboCopyScheduleComponent,
+        WinRoboCopyResourcesComponent,
+        WinRoboCopyCompactViewComponent,
+        WinRoboCopyCompactViewComponent
     ],
     imports: [
         BrowserModule,
