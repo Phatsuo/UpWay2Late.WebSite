@@ -17,6 +17,7 @@ import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-m
 import { DeliciousExtensionComponent } from './pages/projects/delicious-extension/delicious-extension.component';
 import { GoogleExtensionComponent } from './pages/projects/google-extension/google-extension.component';
 import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
+import { WindowAndTabExtensionComponent } from './pages/projects/window-and-tab-extension/window-and-tab-extension.component';
 
 import { ExtensionHeaderComponent } from './components/extension-header/extension-header.component';
 import { KendoImagePreviewComponent } from './components/kendo-image-preview/kendo-image-preview.component';
@@ -29,8 +30,6 @@ import { appRoutes } from './routes';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-
-
 
 @NgModule({
     declarations: [
@@ -48,7 +47,7 @@ import 'rxjs/add/operator/toPromise';
         KendoImagePreviewComponent,
         DeliciousExtensionComponent,
         GoogleExtensionComponent,
-        PinboardExtensionComponent
+        PinboardExtensionComponent, WindowAndTabExtensionComponent
     ],
     imports: [
         BrowserModule,

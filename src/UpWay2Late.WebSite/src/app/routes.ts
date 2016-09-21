@@ -12,6 +12,7 @@ import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-m
 import { DeliciousExtensionComponent } from './pages/projects/delicious-extension/delicious-extension.component';
 import { GoogleExtensionComponent } from './pages/projects/google-extension/google-extension.component';
 import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
+import { WindowAndTabExtensionComponent } from './pages/projects/window-and-tab-extension/window-and-tab-extension.component';
 
 export const appRoutes: Routes = [
     {
@@ -42,6 +43,10 @@ export const appRoutes: Routes = [
     {
         path: 'projects/chrome-pinboard-extension-bookmark-sync',
         component: PinboardExtensionComponent
+    },
+    {
+        path: 'projects/awesome-window-tab-manager',
+        component: WindowAndTabExtensionComponent
     },
     {
         path: 'downloads',
