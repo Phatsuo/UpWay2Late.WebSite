@@ -13,6 +13,7 @@ import { DeliciousExtensionComponent } from './pages/projects/delicious-extensio
 import { GoogleExtensionComponent } from './pages/projects/google-extension/google-extension.component';
 import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
 import { WindowAndTabExtensionComponent } from './pages/projects/window-and-tab-extension/window-and-tab-extension.component';
+import { WinLaunchComponent } from './pages/projects/win-launch/win-launch.component';
 
 export const appRoutes: Routes = [
     {
@@ -47,6 +48,10 @@ export const appRoutes: Routes = [
     {
         path: 'projects/awesome-window-tab-manager',
         component: WindowAndTabExtensionComponent
+    },
+    {
+        path: 'projects/winlaunch',
+        component: WinLaunchComponent
     },
     {
         path: 'downloads',

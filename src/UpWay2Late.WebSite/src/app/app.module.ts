@@ -18,6 +18,7 @@ import { DeliciousExtensionComponent } from './pages/projects/delicious-extensio
 import { GoogleExtensionComponent } from './pages/projects/google-extension/google-extension.component';
 import { PinboardExtensionComponent } from './pages/projects/pinboard-extension/pinboard-extension.component';
 import { WindowAndTabExtensionComponent } from './pages/projects/window-and-tab-extension/window-and-tab-extension.component';
+import { WinLaunchComponent } from './pages/projects/win-launch/win-launch.component';
 
 import { ExtensionHeaderComponent } from './components/extension-header/extension-header.component';
 import { KendoImagePreviewComponent } from './components/kendo-image-preview/kendo-image-preview.component';
@@ -47,7 +48,7 @@ import 'rxjs/add/operator/toPromise';
         KendoImagePreviewComponent,
         DeliciousExtensionComponent,
         GoogleExtensionComponent,
-        PinboardExtensionComponent, WindowAndTabExtensionComponent
+        PinboardExtensionComponent, WindowAndTabExtensionComponent, WinLaunchComponent
     ],
     imports: [
         BrowserModule,
