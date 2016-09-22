@@ -25,6 +25,7 @@
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
         "../node_modules/dateformat/lib/dateformat.js",
+        "../node_modules/autotrack/autotrack.js",
         "../vendor/kendo/kendo.custom.js",
         "../vendor/kendo/kendo.ui.core.js"
       ],
