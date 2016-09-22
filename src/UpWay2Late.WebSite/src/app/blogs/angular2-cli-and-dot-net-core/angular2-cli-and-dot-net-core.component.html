@@ -4,7 +4,7 @@
         <a href="/assets/rss/blog.xml"><img src="/assets/img/blog/feed-icon-28x28.png" /></a>
     </span>
 </h1>
-<div class="panel panel-default">    
+<div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Using the Angular 2 CLI with .NET Core 1.0 and Visual Studio 2015</h3>
     </div>
@@ -13,13 +13,13 @@
         <p>September 21, 2016</p>
 
         <h3>Introduction</h3>
-        
+
         <p>
-            Before the current revision, this site was most recently written in Angular 2 - a few months back, when it was still in beta.
-            I created it quite manually - not even knowing the Angular 2 CLI existed. I have rewritten it now that Angular 2
-            is RTM, using Angular CLI Beta 15. The site now also uses .NET Core, and it's all comprised in a Visual Studio
-            2015 solution. It's not easy to get all these things working together, so he's my first attempt at an actual blog
-            to share some knowledge.
+            Before the current revision, this web site was most recently written in Angular 2. That was in April 2016,
+            when Angular 2 was still in beta. I created it quite manually - not even knowing the Angular 2 CLI existed.
+            I have rewritten it now that Angular 2 is RTM, using Angular CLI Beta 15. The site now also uses .NET Core,
+            and it's all comprised in a Visual Studio 2015 solution. It's not easy to get all these things working together,
+            so he's my first attempt at an actual blog to share some knowledge.
         </p>
 
         <p>
@@ -465,17 +465,24 @@ import {{ '{' }} appRoutes } from './routes';</pre>
         <h3>Conclusion</h3>
 
         <p>
-            I think Angular 2 on the client paired with .NET on the server for data access is a pretty nice way to go, and having it
-            all combined in one solution is convenient. I like
-            generating all the Angular files on the command line - that saves lots of time. The build is pretty nice too, but
-            occasionally things do not work right and it can take a while to figure out what the cause it. Is it the CLI? Is it
-            something with webpack? Is it something with Angular 2 itself? 
+            I like generating all the Angular files on the command line - that saves lots of time. I also like that it also generates
+            all the spec files for writing tests - it is something that is often overlooked in javascript/Typescript projects and
+            this little head start will help a lot of people. I think Angular 2 on the client paired with .NET on the server
+            for data access is a pretty nice way to go, and having it all combined in one solution is convenient.
+        </p>
+        <p>
+            I somewhat like the CLI build process but occasionally things do not work right and it can take a while to figure out
+            what the cause it. Is it the CLI? Is it something with webpack? Is it something with Angular 2 itself? It can be a
+            challenge to figure out the issue when things go wrong. Also, the webpack config is not exposed in anyway - you may
+            want to do something that webpack allows - but the CLI won't let you. Their reasoning here is that they want the
+            ability to switch to something else besides webpack in the future, and not break your code.
         </p>
         <p>
             I'm still not completely sold on the Angular 2 CLI. One thing it eliminates is the ability to dynamically generate
             templates on the server using the templateUrl property of a component. This is because the build accesses
             the templateUrl, and stores the response as an inline template - if the templateUrl is dynamic it throws an error.
-            I <a target="_blank" href="https://github.com/angular/angular-cli/issues/1605">pointed this out</a> and it will not be changed.
+            I <a target="_blank" href="https://github.com/angular/angular-cli/issues/1605">pointed this out</a> and it will not
+            be changed. I supposed you could use the CLI to generate the files but NOT use the build process.
         </p>
 
     </div>
