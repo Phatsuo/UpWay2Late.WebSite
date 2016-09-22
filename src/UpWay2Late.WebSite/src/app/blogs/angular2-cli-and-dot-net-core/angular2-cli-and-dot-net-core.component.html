@@ -1,3 +1,476 @@
-<p>
-  angular2-cli-and-dot-net-core works!
-</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Using the Angular 2 CLI with .NET Core 1.0 and Visual Studio 2015</h3>
+    </div>
+    <div class="panel-body">
+
+        <h3>Introduction</h3>
+
+        <p>September 21, 2016</p>
+
+        <p>
+            Before the current revision, this site was most recently written in Angular 2 - a few months back, when it was still in beta.
+            I created it quite manually - not even knowing the Angular 2 CLI existed. I have rewritten it now that Angular 2
+            is RTM, using Angular CLI Beta 15. The site now also uses .NET Core, and it's all comprised in a Visual Studio
+            2015 solution. It's not easy to get all these things working together, so he's my first attempt at an actual blog
+            to share some knowledge.
+        </p>
+
+        <p>
+            The entire solution is available on <a target="_blank" href="https://github.com/Phatsuo/UpWay2Late.WebSite">GitHub</a>.
+        </p>
+
+        <h3>Tools</h3>
+
+        <ul>
+            <li>VS 2015, Version 14.0.25425.01 Update 3</li>
+            <li>GitHub Extension for Visual Studio 2.0.14.2</li>
+            <li>TypeScript 2.0.2</li>
+            <li>GitBash (or other command line)</li>
+            <li>Angular 2 RTM</li>
+            <li>Angular CLI Beta 15</li>
+            <li>Node 6.6.0</li>
+            <li>npm 3.10.3</li>
+        </ul>
+
+        <p>
+            It's important to note that Angular CLI requires npm 3. I was previously using Node 4 and npm 2.
+            I tried to update just npm to version 3 and that was a total disaster. In the end I had to un-install
+            Node 4, and install Node 6.6 (which includes npm 3).
+        </p>
+
+        <h3>Step 1: Create Visual Studio Solution</h3>
+
+        <p>
+            Create a new Visual Studio solution, selecting .NET Core, and ASP.NET Core. I also used the
+            options to have Visual Studio create my git repository.
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/1/NewProject.png" />
+
+        <p>
+            One the next screen, select Web API.
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/1/NewProjectWebApi.png" />
+
+        <p>
+            Visual Studio creates the first 2 commits in the git repository.
+        </p>
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="8fa41cb1a6504b65b5dc8a51543aba43e3567a50"
+                                     text="Add .gitignore and .gitattributes."></app-git-hub-commit-link>
+        </p>
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="6bf41827a989e310f5cba70b842c7df719dd09a3"
+                                     text="Add project files."></app-git-hub-commit-link>
+        </p>
+
+        <p>And just a little housekeeping here, I removed a few files Visual Studio created that we do not need.</p>
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="aa4e2495b678296f5bce5bfe814959f3e0adcf73"
+                                     text="Removing unnecessary Project_Readme.html and ValuesController.cs."></app-git-hub-commit-link>
+        </p>
+
+        <h3>Step 2: Install Angular 2 CLI</h3>
+
+        <p>If not familiar with Node (and npm), that needs to be installed (v6). <a target="_blank" href="https://nodejs.org/en/">NodeJS</a>.</p>
+
+        <p>These example are also done using git bash for Windows. <a target="_blank" href="https://git-for-windows.github.io/">git bash</a></p>
+
+        <p>So now we install the Angular 2 CLI.</p>
+
+        <p class="console">
+            $ npm install -g angular-cli
+        </p>
+
+        <p>Let's check our version and make sure we're good.</p>
+
+        <p class="console">
+            $ ng --version<br />
+            angular-cli: 1.0.0-beta.15<br />
+            node: 6.6.0<br />
+            os: win32 x64<br />
+        </p>
+
+        <h3>Step 3: Create Angular 2 CLI Project</h3>
+
+        <p>This step is from the command line - and we need to make sure we are in the right place. Visual Studio has created a directory structure as follows:</p>
+
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Directory</th>
+                    <th>Path</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Solution Directory</td>
+                    <td>/UpWay2Late.WebSite</td>
+                    <td>You can find UpWay2Late.WebSite.sln in here.</td>
+                </tr>
+                <tr>
+                    <td>src Directory</td>
+                    <td>/UpWay2Late.WebSite/src</td>
+                    <td>Nothing in here but a folder.</td>
+                </tr>
+                <tr>
+                    <td>Project Directory</td>
+                    <td>/UpWay2Late.WebSite/src/UpWay2Late.WebSite</td>
+                    <td>You can find UpWay2Late.WebSite.xproj in here.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>For this step, we need to be in the <b>Project Directory</b>.</p>
+
+        <p class="console">
+            $ cd /d/Dev/UpWay2Late/WebApps/UpWay2Late.WebSite/src/UpWay2Late.WebSite
+        </p>
+
+        <p>
+            We use the Angular 2 CLI to start a new project in our Visual Studio project. Get ready - to wait. This takes a LONG time - like minutes -
+            while it is getting all the node modules. This is a good time to go grad some coffee.
+        </p>
+
+        <p class="console">
+            $ ng init --name upway2late-website
+        </p>
+
+        <p>Note that's "ng init" as opposed to "ng new" - because we are in an existing project.</p>
+
+        <p>We should be able to build the ng project now.</p>
+
+        <p class="console">
+            $ ng build
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/1/NgBuild.png" />
+
+        <p>In Visual Studio, Team Explorer lets us see graphically exactly what's been added.</p>
+
+        <img class="img-responsive" src="/assets/img/blog/1/AddedByNgInit.png" />
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="c82040efef11f8ff229db7be721de0903f24af33"
+                                     text="Initial ng init added files."></app-git-hub-commit-link>
+        </p>
+
+        <h3>Step 4: Fixing up Visual Studio</h3>
+
+        <p>New we can build in Visual Studio - and get a big fat error.</p>
+
+        <div class="message">Error CS0234	The type or namespace name 'Web' does not exist in the namespace 'System' (are you missing an assembly reference?)</div>
+
+        <p>This is because the Angular 2 CLI installed the selenium-webdriver node module, and Visual Studio is trying to build everything it finds in node_modules.</p>
+
+        <p>Let's tell VS to ignore node_modules. Modify the project json...</p>
+
+        <pre>
+"buildOptions": {{ '{' }}
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true,
+    "compile": {{ '{' }}
+        "exclude": [ "node_modules" ]
+    }
+}</pre>
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="7b5eb632a17853a032fef55f930d2a7279e59839"
+                                     text="Tell VS to ignore the node_modules directory."></app-git-hub-commit-link>
+        </p>
+
+        <p>Now the Visual Studio solution builds with no errors.</p>
+
+        <h3>Step 5: Building the Angular 2 CLI Project to wwwroot</h3>
+
+        <p>By default, the Angular 2 CLI builds to /dist. Visual Studio needs this to be /wwwroot instead.</p>
+
+        <p>Angular 2 CLI has a parameter in it's angular-cli.json called 'outDir', but changing this currently <a target="_blank" href="https://github.com/angular/angular-cli/issues/2230">does not work</a>.</p>
+
+        <p>We can compensate for this on the command line when we build. "-o wwwroot" ensures ng builds to right location for Visual Studio.</p>
+
+        <p class="console">
+            $ ng build -o wwwroot
+        </p>
+
+        <p>And now that were are building to wwwroot, git will start seeing all those files - that we do not need.</p>
+
+        <h3>Step 6: Fixing up Git</h3>
+
+        <p>
+            Let's add the .gitignore file to the Visual Studio solution so we can easily edit it. The first item in the solution tree is called 'Solution Items'.
+            Right click it... Add... Existing Item... and browse to the solution directory. There we find .gitignore and select it.
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/1/SolutionItems.png" />
+
+        <p>Now we open that bad boy up and tell it to ignore wwwroot. It's actually already there - we just have to uncomment it.</p>
+
+        <pre>
+# Uncomment if you have tasks that create the project's static files in wwwroot
+wwwroot/
+</pre>
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="d3d9e164f5b38bbc31d9f4a464ec382b8bfb7f59"
+                                     text="Git ignore wwwroot, add .gitignore to solution."></app-git-hub-commit-link>
+        </p>
+
+        <h3>Step 7: Make Visual Studio Build the Angular 2 CLI Project (optional)</h3>
+
+        <p>This is completely optional, and I ended up disabling the 'automatic' part of it later, and just using the command line.</p>
+
+        <p>This step requires the <a target="_blank" href="https://visualstudiogallery.msdn.microsoft.com/9397a2da-c93a-419c-8408-4e9af30d4e36">.NET Core Task Runner</a> Visual Studio Extension.</p>
+
+        <p>Here is the modification to the <a target="_blank" href="https://docs.microsoft.com/en-us/dotnet/articles/core/tools/project-json">project.json</a> file.</p>
+
+        <app-git-hub-gist-renderer gist="7a24249d9d261fa5fc7e3f9e5f2ca3d8"></app-git-hub-gist-renderer>
+
+        <p>
+            This will indeed cause the ng project build to kick off before Visual Studio does it's build. However, it does not wait for the step to complete
+            before proceeding with it's own build, so 'BeforeBuild' is misleading. It can also be set to 'AfterBuild'. In either case, when you launch the
+            site from Visual Studio, it can launch before the Angular 2 CLI build is completed - so it is useless.
+        </p>
+
+        <p>
+            I ended up removing the '-vs-binding' part from the project.json, but keeping the 'ng-build' part. This let's you launch the ng build manually
+            from Task Runner if desired.
+        </p>
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="6c64507f9d347b6761bdc52bfe7cc0b2a80ebcc1"
+                                     text="Make VS build and deploy the ng site to wwwroot."></app-git-hub-commit-link>
+        </p>
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="2dabd300d73dc0c4fa4c122ab724678202c905b4"
+                                     text="Removing VS build binding for ng build task."></app-git-hub-commit-link>
+        </p>
+
+        <h3>Step 8: Make Visual Studio Run the Project</h3>
+
+        <p>
+            At this point, if we run the project from Visual Studio, it's broken. It sill thinks it's a WebApi project only, and we deleted it's
+            only controller. It's quite sad really.
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/1/NewAppBlank.png" />
+
+        <p>So let's fix this up. First, in the project.json file, we add a new dependency - Microsoft.AspNetCore.StaticFiles.</p>
+
+        <app-git-hub-gist-renderer gist="a33aacf0da305155c7164d782e2fce0b"></app-git-hub-gist-renderer>
+
+        <p>And in startup.cs, we enable the serving of static files.</p>
+
+        <pre>public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{{ '{' }}
+    loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+    loggerFactory.AddDebug();
+    app.UseMvc();
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+}</pre>
+
+        <p>And finally, right click the web project in Visual Studio... Properties... Debug. Keep the Launch URL option checked, but clear the value.</p>
+
+        <img class="img-responsive" src="/assets/img/blog/1/LaunchUrl.png" />
+
+        <p>Now we can build the Visual Studio solution and the Angular 2 CLI project is working.</p>
+
+        <img class="img-responsive" src="/assets/img/blog/1/NewAppRunning.png" />
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="f2916a62f15ca42cbec1ee5e649de367e844c011"
+                                     text="Enable static files, and launch app from VS."></app-git-hub-commit-link>
+        </p>
+
+        <h3>Step 9: Add Bootstrap (optional)</h3>
+
+        <p>Let's add bootstrap 3 to the project.</p>
+
+        <p>We are back to the command line, and again we need to be in the project directory.</p>
+
+        <p class="console">
+            $ npm install jquery --save
+        </p>
+
+        <p class="console">
+            $ npm install bootstrap --save
+        </p>
+
+        <p>Once those are installed, we need to add the relevant files to angular-cli.json.</p>
+
+        <pre>"styles": [
+"styles.css",
+    "../node_modules/bootstrap/dist/css/bootstrap.css"
+],
+"scripts": [
+    "../node_modules/jquery/dist/jquery.js",
+    "../node_modules/bootstrap/dist/js/bootstrap.js"
+]</pre>
+        <p>Now after build the Angular 2 CLI project again, we can see the bootstrap style.</p>
+
+        <img class="img-responsive" src="/assets/img/blog/1/AppWithBootstrap.png" />
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="6ec0bf96bc9cfb1db7394f6b78baa6418f57da9f"
+                                     text="Adding bootstrap."></app-git-hub-commit-link>
+        </p>
+
+        <h3>Step 10: Add News Page</h3>
+
+        <p>OK, ya. This a massive step. Summary of this step:</p>
+
+        <ul>
+            <li>DataController - ASP.NET WebAPI controller to serve server-side data.</li>
+            <li>DataService - client side Angular 2 service to fetch data from the server.</li>
+            <li>NewsComponent - Angular 2 component to show the data.</li>
+            <li>App Module - some changes are required to the Angular 2 app module.</li>
+            <li>Routing - gotta have routes!</li>
+            <li>Bootstrap Nav - there must be things to click.</li>
+        </ul>
+
+        <p>Fortunately, the Angular 2 CLI is going to do a lot of work for us.</p>
+
+        <p>
+            But first, let's get this ASP.NET Controller out of the way. This is really simple - no database - just to demonstrate
+            we can get the data from the server with .NET Core.
+        </p>
+
+        <app-git-hub-gist-renderer gist="7c4436a82e942ac3e896ae7f96c86093"></app-git-hub-gist-renderer>
+
+        <p>Now we can use the Angular 2 CLI to create the model, service, and page component.</p>
+
+        <p>
+            Quick note here, the directions in the Angular 2 CLI for creating files in alternate directories
+            <a target="_blank" href="https://github.com/angular/angular-cli/issues/1639">do not work</a>. What
+            follows is a workaround that almost works, but we will have to make a small change in the app module.
+        </p>
+
+        <p>
+            Hey another quick note: we want to be in the project directory for these commands.
+        </p>
+
+        <p>
+            Hey another quick note! The Angular 2 CLI will expect these directories to exist already - it not there will be error.
+        </p>
+
+        <p>This command creates our service in \src\app\services\data.service.ts. And CLI will tell you it does not PROVIDE the service. We'll do that in a minute.</p>
+
+        <p class="console">
+            $ ng g service services//data
+        </p>
+
+        <p>This command creates our news model in \src\app\models\news.ts.</p>
+
+        <p class="console">
+            $ ng g interface models//news
+        </p>
+
+        <p>This command creates our news component in \src\app\pages\news\news.component.ts (plus html and css files as well).</p>
+
+        <p class="console">
+            $ ng g component pages//news
+        </p>
+
+        <h4>app.module.ts</h4>
+
+        <p>Now here's the issue with the workaround I mentioned. For the news component, we see this in the app.module.ts.</p>
+
+        <pre>import {{ '{' }} NewsComponent } from './pages\news/news.component';</pre>
+
+        <p>See the backslash? That needs to be fixed.</p>
+
+        <pre>import {{ '{' }} NewsComponent } from './pages/news/news.component';</pre>
+
+        <p>
+            The Angular 2 CLI also added the NewsComponent to the declarations in our App module (app.module.ts). It did not,
+            however, and the DataService to the providers section. We want the access the DataService from anywhere, so we add that
+            as well.
+        </p>
+
+        <pre>import {{ '{' }} DataService } from './services/data.service';</pre>
+
+        <pre>providers: [
+    DataService
+]</pre>
+
+        <h4>data.service.ts</h4>
+
+        <p>Here's my data service. All it's doing is making the one call to the server for the data, and returning an observable.</p>
+
+        <app-git-hub-gist-renderer gist="508acf044956e3f367278bfabcd9fbb0"></app-git-hub-gist-renderer>
+
+        <h4>news.component.ts</h4>
+
+        <p>Here's the news component that consumes the data service, pulling in all that red-hot breaking news.</p>
+
+        <app-git-hub-gist-renderer gist="4bae17332ce94ba2d1947eb82607c298"></app-git-hub-gist-renderer>
+
+        <h4>news.component.html</h4>
+
+        <p>Here's the news component html.</p>
+
+        <app-git-hub-gist-renderer gist="79ceb7e7f701a1e82ebd7c9e31a02fa0"></app-git-hub-gist-renderer>
+
+        <h4>routes.ts</h4>
+
+        <p>OK and finally there is routing. The CLI does not (yet) add any routing for you. For this step I manually created a new routes.ts file.</p>
+
+        <app-git-hub-gist-renderer gist="9668053c4c2a109141116510a2dcd6a5"></app-git-hub-gist-renderer>
+
+        <p>And the following modifications to our App module (app.module.ts) enable said routes.</p>
+
+        <pre>import {{ '{' }} RouterModule } from '@angular/router';
+import {{ '{' }} appRoutes } from './routes';</pre>
+
+        <pre>   imports: [
+    /* other stuff */
+    RouterModule.forRoot(appRoutes, {{ '{' }} useHash: true })
+]</pre>
+
+        <p>Lots of stuff, and the full git commit is here:</p>
+
+        <p>
+            <app-git-hub-commit-link repo="UpWay2Late.WebSite"
+                                     commit="bc6bb41424662f10f6f6fdf6250603d0aead70b4"
+                                     text="Adding news page component, routes, data access service, and .NET data controller."></app-git-hub-commit-link>
+        </p>
+
+        <h3>Steps 11-99: The Rest of the Site</h3>
+
+        <p>The rest is on GitHub (hey - including the code for this blog!), and I have a few good ideas on what to cherry pick for another post... so don't go looking at everything!</p>
+
+        <h3>Conclusion</h3>
+
+        <p>
+            I think Angular 2 on the client paired with .NET on the server for data access is a pretty nice way to go, and having it
+            all combined in one solution is convenient. I like
+            generating all the Angular files on the command line - that saves lots of time. The build is pretty nice too, but
+            occasionally things do not work right and it can take a while to figure out what the cause it. Is it the CLI? Is it
+            something with webpack? Is it something with Angular 2 itself? 
+        </p>
+        <p>
+            I'm still not completely sold on the Angular 2 CLI. One thing it eliminates is the ability to dynamically generate
+            templates on the server using the templateUrl property of a component. This is because the build accesses
+            the templateUrl, and stores the response as an inline template - if the templateUrl is dynamic it throws an error.
+            I <a target="_blank" href="https://github.com/angular/angular-cli/issues/1605">pointed this out</a> and it will not be changed.
+        </p>
+
+    </div>
+</div>

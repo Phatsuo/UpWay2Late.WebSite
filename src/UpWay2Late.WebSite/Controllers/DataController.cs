@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using UpWay2Late.WebSite.Libs;
 using UpWay2Late.WebSite.Models;
 
 namespace UpWay2Late.WebSite.Controllers
@@ -61,6 +65,52 @@ namespace UpWay2Late.WebSite.Controllers
         public Contact[] GetContacts()
         {
             return Contacts;
+        }
+
+        /// <summary>
+        /// Gets the gist.
+        /// Ugly as it is, we are going to grab that gist, parse out the document.write() 
+        /// wrappers, and return the html to the client where it will be in-lined for viewing.
+        /// </summary>
+        /// <remarks>
+        /// TODO: cache these.
+        /// </remarks>
+        [HttpPost("api/[controller]/[action]")]
+        public async Task<GistReponse> GetGist([FromBody] GistRequest gistRequest)
+        {
+            var user = WebUtility.UrlEncode(gistRequest.User);
+            var id = WebUtility.UrlEncode(gistRequest.Id);
+
+            if (user != gistRequest.User || id != gistRequest.Id)
+            {
+                throw new Exception("Unexpected request.");
+            }
+
+            var url = $"https://gist.github.com/{user}/{gistRequest.Id}.js";
+
+            var response = await WebHelper.GetHtml(url);
+
+            var parts = response.Split(new[] { '\r', '\n' });
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var part in parts)
+            {
+                if (!string.IsNullOrWhiteSpace(part))
+                {
+                    var line = part.Trim();
+                    if (line.StartsWith("document.write(") && line.EndsWith("')"))
+                    {
+                        sb.AppendLine(line.Substring(16, line.Length - 18).Replace("\\\"", "\"").Replace("\\/", "/").Replace("\\n", "\n"));
+                    }                    
+                }
+            }
+
+            return new GistReponse
+            {
+                Success = sb.Length > 0,
+                Html = sb.ToString()
+            };
         }
     }
 }

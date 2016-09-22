@@ -12,6 +12,8 @@ import { DownloadsComponent } from './pages/downloads/downloads.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component'
 
+import { Angular2CliAndDotNetCoreComponent } from './blogs/angular2-cli-and-dot-net-core/angular2-cli-and-dot-net-core.component';
+
 import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
 import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-manager.component';
 import { DeliciousExtensionComponent } from './pages/projects/delicious-extension/delicious-extension.component';
@@ -26,9 +28,9 @@ import { WinRoboCopyScriptsComponent } from './pages/projects/win-robo-copy/win-
 import { WinRoboCopyScheduleComponent } from './pages/projects/win-robo-copy/win-robo-copy-schedule/win-robo-copy-schedule.component';
 import { WinRoboCopyResourcesComponent } from './pages/projects/win-robo-copy/win-robo-copy-resources/win-robo-copy-resources.component';
 
-import { Angular2CliAndDotNetCoreComponent } from './blogs/angular2-cli-and-dot-net-core/angular2-cli-and-dot-net-core.component';
-
 import { ExtensionHeaderComponent } from './components/extension-header/extension-header.component';
+import { GitHubCommitLinkComponent } from './components/git-hub-commit-link/git-hub-commit-link.component';
+import { GitHubGistRendererComponent } from './components/git-hub-gist-renderer/git-hub-gist-renderer.component';
 import { KendoImagePreviewComponent } from './components/kendo-image-preview/kendo-image-preview.component';
 import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 
@@ -41,24 +43,25 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-
 @NgModule({
     declarations: [
         AppComponent,
-        NewsComponent,
+        // pages
         HomeComponent,
+        NewsComponent,        
         ProjectsComponent,
         DownloadsComponent,
         ContactComponent,
         PrivacyComponent,
+        // blogs
+        Angular2CliAndDotNetCoreComponent,
+        // projects
         ButtonsComponent,
         CookieManagerComponent,
         CookieManagerComponent,
-        ExtensionHeaderComponent,
-        KendoImagePreviewComponent,
-        ResponsiveImageComponent,
         DeliciousExtensionComponent,
         GoogleExtensionComponent,
+        PickEmLeaguesComponent,
         PinboardExtensionComponent,
         WindowAndTabExtensionComponent,
         WinLaunchComponent,
@@ -68,8 +71,12 @@ import 'rxjs/add/operator/toPromise';
         WinRoboCopyResourcesComponent,
         WinRoboCopyCompactViewComponent,
         WinRoboCopyCompactViewComponent,
-        PickEmLeaguesComponent,
-        Angular2CliAndDotNetCoreComponent
+        // components
+        ExtensionHeaderComponent,
+        GitHubCommitLinkComponent,
+        GitHubGistRendererComponent,
+        KendoImagePreviewComponent,
+        ResponsiveImageComponent
     ],
     imports: [
         BrowserModule,

@@ -7,6 +7,8 @@ import { DownloadsComponent } from './pages/downloads/downloads.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component'
 
+import { Angular2CliAndDotNetCoreComponent } from './blogs/angular2-cli-and-dot-net-core/angular2-cli-and-dot-net-core.component';
+
 import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
 import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-manager.component';
 import { DeliciousExtensionComponent } from './pages/projects/delicious-extension/delicious-extension.component';
@@ -30,6 +32,10 @@ export const appRoutes: Routes = [
     {
         path: 'news',
         component: NewsComponent
+    },
+    {
+        path: 'blogs/angular2-cli-and-dot-net-core',
+        component: Angular2CliAndDotNetCoreComponent
     },
     {
         path: 'projects/buttons-project',

@@ -34,4 +34,15 @@ export class DataService {
                 return data;
             });
     }
+
+    getGist(user: string, id: string): Observable<string> {
+        const args = { user: user, id: id };
+        return this._http.post('/api/data/getGist/', JSON.stringify(args), { headers: this.headers })
+            .map((responseData) => {
+                return responseData.json();
+            })
+            .map((data: any) => {
+                return data.html;
+            });
+    }
 }

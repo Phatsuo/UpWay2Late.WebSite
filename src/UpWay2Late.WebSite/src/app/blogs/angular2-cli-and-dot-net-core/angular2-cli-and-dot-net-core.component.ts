@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Angular2CliAndDotNetCoreComponent implements OnInit {
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }
