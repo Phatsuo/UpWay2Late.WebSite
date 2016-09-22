@@ -4,7 +4,7 @@
 }
 
 .twitter-li {
-    padding-top: 11px;    
+    padding-top: 11px;
 }
 
 .lined-grid div.row { 
@@ -14,4 +14,9 @@
 
 .lined-grid div.row:last-child {
   border-bottom: 1px solid;
+}
+
+.page-header-right {
+    float: right;
+    padding-top: 5px;
 }
