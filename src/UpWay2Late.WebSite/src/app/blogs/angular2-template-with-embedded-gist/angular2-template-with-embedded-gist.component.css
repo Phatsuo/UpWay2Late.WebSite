@@ -1,0 +1,41 @@
+h4 {
+    margin-top: 20px;
+}
+
+img {
+    margin-bottom: 20px;
+}
+
+.console {
+    color: white;
+    background-color: black;
+    font-family: 'Lucida Console';
+    padding: 5px;
+}
+
+.message {
+    background-color: lightgray;
+    border: solid;
+    border-width: 1px;
+    border-color: darkgray;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.error {
+    background-color: #f1a376;
+    border: solid;
+    border-width: 1px;
+    border-color: #ff0000;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.warning {
+    background-color: #ffd800;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 5px;
+    margin-bottom: 20px;
+}

@@ -29,7 +29,7 @@
         <h3>Tools</h3>
 
         <ul>
-            <li>VS 2015, Version 14.0.25425.01 Update 3</li>
+            <li>Visual Studio 2015, Version 14.0.25425.01 Update 3</li>
             <li>GitHub Extension for Visual Studio 2.0.14.2</li>
             <li>TypeScript 2.0.2</li>
             <li>GitBash (or other command line)</li>
@@ -144,7 +144,7 @@
 
         <p>
             We use the Angular 2 CLI to start a new project in our Visual Studio project. Get ready - to wait. This takes a LONG time - like minutes -
-            while it is getting all the node modules. This is a good time to go grad some coffee.
+            while it is getting all the node modules. This is a good time to go grab some coffee.
         </p>
 
         <p class="console">
@@ -269,7 +269,7 @@ wwwroot/
         <h3>Step 8: Make Visual Studio Run the Project</h3>
 
         <p>
-            At this point, if we run the project from Visual Studio, it's broken. It sill thinks it's a WebApi project only, and we deleted it's
+            At this point, if we run the project from Visual Studio, it's broken. It still thinks it's a WebApi project only, and we deleted it's
             only controller. It's quite sad really.
         </p>
 
@@ -328,7 +328,7 @@ wwwroot/
     "../node_modules/jquery/dist/jquery.js",
     "../node_modules/bootstrap/dist/js/bootstrap.js"
 ]</pre>
-        <p>Now after build the Angular 2 CLI project again, we can see the bootstrap style.</p>
+        <p>Now after building the Angular 2 CLI project again, we can see the bootstrap style.</p>
 
         <img class="img-responsive" src="/assets/img/blog/1/AppWithBootstrap.png" />
 
@@ -373,10 +373,10 @@ wwwroot/
         </p>
 
         <p>
-            Hey another quick note! The Angular 2 CLI will expect these directories to exist already - it not there will be error.
+            Hey another quick note! The Angular 2 CLI will expect these directories to exist already - if not there will be error.
         </p>
 
-        <p>This command creates our service in \src\app\services\data.service.ts. And CLI will tell you it does not PROVIDE the service. We'll do that in a minute.</p>
+        <p>This command creates our service in \src\app\services\data.service.ts. And the CLI will tell you it does not PROVIDE the service. We'll do that in a minute.</p>
 
         <p class="console">
             $ ng g service services//data
@@ -484,6 +484,8 @@ import {{ '{' }} appRoutes } from './routes';</pre>
             I <a target="_blank" href="https://github.com/angular/angular-cli/issues/1605">pointed this out</a> and it will not
             be changed. I supposed you could use the CLI to generate the files but NOT use the build process.
         </p>
+
+        <p>Questions? Comments? No way to do that yet... except via email. <a href="mailto:blogs@upway2late.com">blogs@upway2late.com</a></p>
 
     </div>
 </div>

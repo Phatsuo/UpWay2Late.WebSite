@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using UpWay2Late.WebSite.Libs;
 using UpWay2Late.WebSite.Models;
@@ -10,8 +12,10 @@ namespace UpWay2Late.WebSite.Controllers
 {
     public class DataController : Controller
     {
+        Regex alphanumeric = new Regex("^[a-zA-Z0-9]*$");
+
         // todo: move to a database.
-        private static News[] News = new [] {
+        private static News[] News = {
             new News { Date = DateTime.Parse("9/20/2016"), Text = "Pick Em Leagues is in testing!" },
             new News { Date = DateTime.Parse("4/19/2016"), Text = "WinRoboCopy 1.3.5953.40896 released!" },
             new News { Date = DateTime.Parse("4/6/2016"), Text = "Buttons project 1.2 released!" },
@@ -43,7 +47,7 @@ namespace UpWay2Late.WebSite.Controllers
             new News { Date = DateTime.Parse("5/10/2011"), Text = "WinRoboCopy 1.0 is now available for download!" }
         };
 
-        private static Contact[] Contacts = new[] {
+        private static Contact[] Contacts = {
             new Contact { Name = "General Stuff", Email = "contact@upway2late.com" },
             new Contact { Name = "Support", Email = "support@upway2late.com" },
             new Contact { Name = "Pick Em Leagues", Email = "contact@pickemleagues.com" },
@@ -70,7 +74,7 @@ namespace UpWay2Late.WebSite.Controllers
         /// <summary>
         /// Gets the gist.
         /// Ugly as it is, we are going to grab that gist, parse out the document.write() 
-        /// wrappers, and return the html to the client where it will be in-lined for viewing.
+        /// wrappers, and return the HTML to the client where it will be in-lined for viewing.
         /// </summary>
         /// <remarks>
         /// TODO: cache these.
@@ -78,21 +82,15 @@ namespace UpWay2Late.WebSite.Controllers
         [HttpPost("api/[controller]/[action]")]
         public async Task<GistReponse> GetGist([FromBody] GistRequest gistRequest)
         {
-            var user = WebUtility.UrlEncode(gistRequest.User);
-            var id = WebUtility.UrlEncode(gistRequest.Id);
-
-            if (user != gistRequest.User || id != gistRequest.Id)
+            if (!alphanumeric.IsMatch(gistRequest.User) || !alphanumeric.IsMatch(gistRequest.Id))
             {
-                throw new Exception("Unexpected request.");
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
 
-            var url = $"https://gist.github.com/{user}/{gistRequest.Id}.js";
-
-            var response = await WebHelper.GetHtml(url);
-
-            var parts = response.Split(new[] { '\r', '\n' });
-
-            StringBuilder sb = new StringBuilder();
+            var url = $"https://gist.github.com/{gistRequest.User}/{gistRequest.Id}.js";
+            var response = await WebHelper.GetHtml(url) ?? string.Empty;
+            var parts = response.Split('\r', '\n');
+            var sb = new StringBuilder();
 
             foreach (var part in parts)
             {
@@ -101,8 +99,15 @@ namespace UpWay2Late.WebSite.Controllers
                     var line = part.Trim();
                     if (line.StartsWith("document.write(") && line.EndsWith("')"))
                     {
-                        sb.AppendLine(line.Substring(16, line.Length - 18).Replace("\\\"", "\"").Replace("\\/", "/").Replace("\\n", "\n"));
-                    }                    
+                        line = line.Substring(16, line.Length - 18).Replace("\\\"", "\"").Replace("\\/", "/");
+
+                        // replace the newlines, but not the ones that should be there.
+                        line = Regex.Replace(line, "([^\\\\])(\\\\n)", "$1\n");
+                        line = Regex.Replace(line, "^\\\\n", "\n", RegexOptions.Multiline);
+                        line = Regex.Replace(line, "\\\\\\\\", "\\");
+
+                        sb.AppendLine(line);
+                    }
                 }
             }
 

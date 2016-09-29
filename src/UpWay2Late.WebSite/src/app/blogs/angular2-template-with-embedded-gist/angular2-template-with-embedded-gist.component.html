@@ -1,0 +1,255 @@
+<h1>
+    BLOGS/
+    <span class="page-header-right">
+        <a href="/assets/rss/blog.xml"><img src="/assets/img/blog/feed-icon-28x28.png" /></a>
+    </span>
+</h1>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Angular 2 Templates with Embedded Gists</h3>
+    </div>
+    <div class="panel-body">
+
+        <p>September 28, 2016</p>
+
+        <h3>Introduction</h3>
+
+        <p>
+            I wrote my first blog post last week, and it didn't take long during that task to run into an all new
+            issue worthy of a second post. I was blogging about Angular 2, and the Angular 2 CLI - and using both of
+            them in the creation of the blog. So obviously, that blog post is going to contain some code examples. Adding
+            those in and Angular 2 template proved to be a lot more problematic that I would have guessed. Here's what
+            happened and how I solved (or maybe more accurately worked-around) the issues.
+        </p>
+
+        <h3>Tools</h3>
+
+        <ul>
+            <li>Visual Studio 2015, Version 14.0.25425.01 Update 3</li>
+            <li>TypeScript 2.0.2</li>
+            <li>C#, .NET Core</li>
+            <li>Angular 2 RTM</li>
+        </ul>
+
+        <h3>Step 1: Let's Just Slap The Code Examples In Pre Tags!</h3>
+
+        <p>
+            I didn't really know how much code I was going to want to show on the blog - it didn't seem like
+            much at first, so I just started putting the code in PRE tags. Like this:
+        </p>
+
+        <pre>
+&lt;pre&gt;
+export class AwesomeService {{ '{' }}
+    constructor() {{ '{' }} }
+    awesomenessGalor(arg: string): string {{ '{' }}
+        return `${{ '{' }}arg} is indeed awesome`;
+    }
+}
+&lt;/pre&gt;</pre>
+
+        <p>And not shockingly, that is just such an example right there if you look at the source. Everything is cool, no problems... yet.</p>
+
+        <p>
+            Interesting side note: being inside an Angular 2 template, the first very minor problem to solve was that the left
+            squiggly brace...
+        </p>
+
+        <pre>{{ '{' }}</pre>
+
+        <p>... it must be encoded like this ...</p>
+
+        <pre>{{ codeSample1 }}</pre>
+
+        <p>... OK, not the end of the world. And it was good - for a few samples.</p>
+
+        <p>
+            Then I added quite a large code sample to the template, and it had quite a few left curly braces. I eagerly replaced each one
+            with the encoded version so I could keep moving forward. And it was at this point I was presented with a brand new, shiny,
+            never before seen (by me) error message:
+        </p>
+
+        <div class="error">
+            zone.js:355 Unhandled Promise rejection: Template parse errors:<br />
+            Error: Only support at most 9 interpolation values!
+        </div>
+
+        <p>
+            What have I done? I have angered the Angular 2 gods! Or it might not be that bad - I have just included more than 9
+            interpolated values (AKA those squiggly guys) in one element.
+        </p>
+
+        <p>
+            This seems like a rather arbitrary and low limit. I saw a few complaints about it in the Angular 2 GitHub repository
+            issues section. Most times this can be worked around by combining values or keeping things in separate HTML elements.
+        </p>
+
+        <p>
+            Such workarounds do not apply very well in my 'code example' case... but it was at this point I decided I was going about it
+            all entirely incorrectly anyway. What I should really be doing is...
+        </p>
+
+        <h3>Step 2: Let's Use GitHub Gists Instead!</h3>
+
+        <p>
+            And I was so happy! My problems were over! I've seen GitHub Gists on unlimited pages all over the web - why did
+            I not think of this in the first place?
+        </p>
+
+        <p>
+            So I went <a target="_blank" href="https://gist.github.com/">here</a> and created a new Gist. After creating it,
+            the instructions to use it are so simple, just click here to copy some text to the clipboard and then paste to
+            include it on your web page:
+        </p>
+
+        <pre>&lt;script src=&quot;https://gist.github.com/Phatsuo/a33aacf0da305155c7164d782e2fce0b.js&quot;&gt;&lt;/script&gt;</pre>
+
+        <p>
+            Again I eagerly completed these steps, rebuilt the web site, and reloaded the page in anticipation of viewing
+            my most awesome code sample in that sweet, sweet GitHub Gist layout - but I was rewarded with nothing. There was no
+            Gist on my blog. I looked in the HTML that had been served to the browser, and the script tag was not there.
+            Because...
+        </p>
+
+        <div class="warning">
+            Angular 2 removes script tags from templates as a security measure.
+        </div>
+
+        <p>That's right. But there must be a way to add the script tag anyway, correct?</p>
+
+        <h3>Step 3: Let's Add That Script Tag Dynamically!</h3>
+
+        <p>
+            I started going through the Angular 2
+            <a target="_blank" href="https://angular.io/docs/ts/latest/guide/security.html">Security Docs</a>,
+            and there was a lot of promising information there. For instance:
+        </p>
+
+        <div class="message">
+            Resource URL is a URL that will be loaded and executed as code, for example, in &lt;script src&gt;
+        </div>
+
+        <p>And...</p>
+
+        <div class="message">
+            You can mark a value as trusted by injecting DomSanitizer and calling one of the following methods... bypassSecurityTrustResourceUrl
+        </div>
+
+        <p>
+            However the documentation is still a bit hard to follow, and nothing I tried (and I tried everything) will keep Angular 2
+            from stripping that script tag out of the template, so on to trying to add it dynamically....
+        </p>
+
+        <p>I have a Plunker that demonstrates adding a script tag dynamically <a target="_blank" href="http://plnkr.co/edit/JLuedr?p=preview">here</a>.</p>
+
+        <p>And a Gist of the component:</p>
+
+        <app-git-hub-gist-renderer gist="98f294277e6d745f0384d6e2c7312a38"></app-git-hub-gist-renderer>
+
+        <p>Here is a screen shot so you can see - the script tag is there! But still - there is no Gist on the page.</p>
+
+        <img class="img-responsive" src="/assets/img/blog/2/NoGist.png" />
+
+        <p>
+            Why have the development gods forsaken me? Why can't I show a Gist on my web page? Why?
+        </p>
+
+        <p>
+            Answer: Even thought the script tag is now on the page, source is not being downloaded. This can be easily confirmed by watching the
+            Network tab in Chrome's Developer Tools. Why is it not being downloaded? I'm not sure - this I am still looking into. For now
+            we move on to the next attempt.
+        </p>
+
+        <h3>Step 4: Let's Add That Script Tag Dynamically... with plain Javascript!</h3>
+
+        <p>It's relatively trivial to just add the script tag with plain Javascript, so let's give that a try.</p>
+
+        <p>Plunker: <a target="_blank" href="http://plnkr.co/edit/JLuedr?p=preview">here</a>.</p>
+
+        <p>And a Gist:</p>
+
+        <app-git-hub-gist-renderer gist="89d4e367f395038c0bc602f7886b084c"></app-git-hub-gist-renderer>
+
+        <p>
+            This example places the script tag on the page, AND the script is downloaded (confirmed by watching the network traffic).
+            Perfect! But there is still no Gist on the page. And there is a related warning in the console:
+        </p>
+
+        <div class="warning">
+            Failed to execute 'write' on 'Document': It isn't possible to write into a document from an asynchronously-loaded external
+            script unless it is explicitly opened.
+        </div>
+
+        <p>
+            Ah yes. OK, let's take a look at the script GitHub is providing:
+        </p>
+
+        <pre>document.write('&lt;link&gt;this line is a link to a style sheet&lt;/link&gt;')
+document.write('&lt;div&gt;and in here is a bunch of HTML for everything else&lt;/div&gt;')</pre>
+
+        <p>
+            It is just 2 document.write() statements and HTML... and document.write() only works when the page is loading.
+        </p>
+
+        <h3>Step 5: Overwriting document.write()</h3>
+
+        <p>Hey, finally we get to something that actually works. Our current Plunker will display the Gist with a small addition.</p>
+
+        <p>Plunker: <a target="_blank" href="http://plnkr.co/edit/dUUCAt?p=preview">here</a>.</p>
+
+        <p>And a Gist:</p>
+
+        <app-git-hub-gist-renderer gist="3ec8b655d2f5b595386881684e14154b"></app-git-hub-gist-renderer>
+
+        <p>This replaces the document.write() method with our own method - which then adds the HTML to a span.</p>
+
+        <p>
+            Replacing the document.write() method doesn't seem like the safest idea in the world, but it can at least
+            be improved on by replacing it only temporarily. We'll first save the original document.write(), then restore it
+            after the script has loaded.
+        </p>
+
+        <p>Plunker: <a target="_blank" href="http://plnkr.co/edit/QShcRJ?p=preview">here</a>.</p>
+
+        <p>And a Gist:</p>
+
+        <app-git-hub-gist-renderer gist="c393e5bb0a3754191f9d873f5ad746ca"></app-git-hub-gist-renderer>
+
+        <p>
+            script.onload() will fire after script is loaded, so this should be safe. But it still seemed like a very big
+            hack, so I decided to go server side.
+        </p>
+
+        <h3>Step 6: Get the Gist on the Server</h3>
+
+        <p>
+            In the end, I decided to just deal with this on server, send the client the HTML, and have the client
+            place the HTML in a span. That let me write a very simple Angular 2 component:
+        </p>
+
+        <app-git-hub-gist-renderer gist="3c58f2e69c303fa3f8b667d3aee31206"></app-git-hub-gist-renderer>
+
+        <p>And I can handle getting the Gist and parsing it out on the server.</p>
+
+        <app-git-hub-gist-renderer gist="5ef00141c8470d7c14ebb256e857dd1b"></app-git-hub-gist-renderer>
+
+        Usage:
+        <pre>&lt;app-git-hub-gist-renderer gist=&quot;c393e5bb0a3754191f9d873f5ad746ca&quot;&gt;&lt;/app-git-hub-gist-renderer&gt;</pre>
+
+        <h3>Conclusion</h3>
+
+        <p>
+            Handling it on the server seems like less of a hack than replacing the document.write() method, so it is what I am using right
+            now. It's still not totally satisfying - I feel like there should be a way to parse that HTML on the client since
+            that's clearly what happens when it goes through document.write(). I explored that path and came up empty. Seems like
+            there is always more to do!
+        </p>
+
+        <p>
+            The entire solution is available on <a target="_blank" href="https://github.com/Phatsuo/UpWay2Late.WebSite">GitHub</a>.
+        </p>
+
+        <p>Questions? Comments? No way to do that yet... except via email. <a href="mailto:blogs@upway2late.com">blogs@upway2late.com</a></p>
+
+    </div>
+</div>
