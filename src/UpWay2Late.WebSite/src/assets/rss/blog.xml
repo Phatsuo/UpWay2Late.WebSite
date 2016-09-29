@@ -27,8 +27,8 @@
 			<description>I wrote my first blog post last week, and it didn't take long during that task to run into an all new
             issue worthy of a second post. I was blogging about Angular 2, and the Angular 2 CLI - and using both of
             them in the creation of the blog. So obviously, that blog post is going to contain some code examples. Adding
-            those in and Angular 2 template proved to be a lot more problematic that I would have guessed. Here's what
-            happened and how I solved (or maybe more accurately worked-around) the issues.</description>
+            those examples into an Angular 2 template proved to be a lot more problematic that I would have guessed. Here's
+            what happened and how I solved (or maybe more accurately worked-around) the issues...</description>
 			<pubDate>Wed, 29 Sep 2016 4:16:00 GMT</pubDate>
 			<guid>889D8CC8-94D5-4874-B36F-3D09D317C4D3</guid>
 			<link>http://www.upway2late.com/#/blogs/angular2-template-with-embedded-gist</link>

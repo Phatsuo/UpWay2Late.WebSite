@@ -32,6 +32,7 @@ import { WinRoboCopyResourcesComponent } from './pages/projects/win-robo-copy/wi
 import { ExtensionHeaderComponent } from './components/extension-header/extension-header.component';
 import { GitHubCommitLinkComponent } from './components/git-hub-commit-link/git-hub-commit-link.component';
 import { GitHubGistRendererComponent } from './components/git-hub-gist-renderer/git-hub-gist-renderer.component';
+import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { KendoImagePreviewComponent } from './components/kendo-image-preview/kendo-image-preview.component';
 import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 
@@ -77,6 +78,7 @@ import 'rxjs/add/operator/toPromise';
         ExtensionHeaderComponent,
         GitHubCommitLinkComponent,
         GitHubGistRendererComponent,
+        JumbotronComponent,
         KendoImagePreviewComponent,
         ResponsiveImageComponent
     ],
