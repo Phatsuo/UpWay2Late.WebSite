@@ -1,3 +1,11 @@
+html, body {
+   height: 100%;
+}
+
+.app-root {
+   min-height: calc(100% - 50px);
+}
+
 .brand-font {
     color: #005ccd;
     font-weight: bolder;
