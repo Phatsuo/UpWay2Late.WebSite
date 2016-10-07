@@ -1,0 +1,131 @@
+<app-jumbotron headline="Blogs/" text="Software development. And stuff." image="keyboard-2.png"></app-jumbotron>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{title}}</h3>
+    </div>
+    <div class="panel-body">
+
+        <p>October 6, 2016</p>
+
+        <h3>Introduction</h3>
+
+        <p>
+            This week I am presenting what I think will be a pretty quick walk though on how to add UI Blocking
+            to an Angular 2 application. The classic use-case for this feature is blocking the UI from user input
+            while some long running task, like an AJAX call, is taking place. We have two goals here. (1) Keep the
+            user from taking further action until the long running task completes, and (2) make sure the user is
+            informed as to why they are just sitting there doing nothing.
+        </p>
+
+        <p>
+            This code produces an effect where the web page remains visible but is slightly grayed out, and
+            a message and spinning gif are centered on the screen. Example:
+        </p>
+
+        <img src="/assets/img/blog/3/blocked.png" />
+
+        <h3>Tools</h3>
+
+        <ul>
+            <li>Visual Studio 2015, Version 14.0.25425.01 Update 3</li>
+            <li>TypeScript 2.0.2</li>
+            <li>C#, .NET Core</li>
+            <li>Angular 2 RTM 2.0.1</li>
+        </ul>
+
+        <h3>Step 1: Add Some Boilerplate Code to the AppComponent</h3>
+
+        <p>
+            We need to make sure we inject a reference to the application's ViewContainerRef in AppComponent. If does not
+            look like this is doing anything, but it is in fact adding a reference to the ViewContainerRef to the
+            component tree, which is going to be very handy in a few minutes.
+        </p>
+
+        <app-git-hub-gist-renderer gist="db37281274fa71d1c6fe5929e772c0ea"></app-git-hub-gist-renderer>
+
+        <h3>Step 2: Must Have: A Cool Spinner Gif</h3>
+
+        <p>
+            A cool spinner gif lets the user know important things are happening. We could just SAY important things
+            are happening - and we will - but the gif really drives it home. Here's my current favorite site for acquiring
+            such a gif, complete with custom colors and everything.
+        </p>
+
+        <p>
+            <a target="_blank" href="http://loading.io/">loading.io</a>
+        </p>
+
+        <p>
+            Create a nice spinner and save it somewhere local to your website (example: /styles/img/spinner.gif).
+        </p>
+
+        <img src="/assets/img/blog/3/spinner.gif" />
+
+        <h3>Step 3: Create a UI Blocking Component</h3>
+
+        <p>
+            We need to create a UI blocking component. This piece is basically the HTML chunk that will be displayed
+            when we block the user interface. This is a really basic example but the important feature here is that in addition
+            to the displaying the spinner gif, we are adding a message.
+        </p>
+
+        <app-git-hub-gist-renderer gist="a8cd5ea26d63eafef0afaa54b0f6da43"></app-git-hub-gist-renderer>
+
+        <p>NOTE: The "in" and "modal-backdrop" css classes are from bootstrap.</p>
+
+        <h3>Step 4: Create a UI Blocking Service</h3>
+
+        <p>
+            So far so good. Now we need to add a UI blocking service. The service will provide methods to a caller
+            that allow the calling component to start and stop the blocker. In the method topViewContainer, we can
+            see where we are using that reference to the ViewContainerRef that we added in the AppComponent. This
+            service will use that reference to add a dynamically created instance of the UI blocking component to
+            the DOM.
+        </p>
+
+        <app-git-hub-gist-renderer gist="1ce076ab77150a960282efa134927af0"></app-git-hub-gist-renderer>
+
+        <h3>Step 5: Add the UI Blocking Component and the UI Blocking Service to AppModule</h3>
+
+        <p>
+            In order to use the UI blocking component and the UI blocking service, we need to add them to
+            the AppModule. Note that we want a single instance of the UI blocking service to be available from
+            anywhere in the module, so we add that service here and it will be provided JUST LIKE THAT.
+        </p>
+
+        <p>
+            NOTE: Notice that the UI blocking component is also included in the <b>entryComponents</b> array. Any
+            components that will be dynamically created need to appear here in addition to the declarations array.
+        </p>
+
+        <app-git-hub-gist-renderer gist="05036ddc32fd6a33c9972ef1605da5f7"></app-git-hub-gist-renderer>
+
+        <h3>Step 6: Block Some UI!</h3>
+
+        <p>Now we can block UI from any component in the module, following these steps:</p>
+
+        <ul>
+            <li>Import the UI blocking service.</li>
+            <li>Inject the UI blocking service in the constructor.</li>
+            <li>Call start(message) to start blocking.</li>
+            <li>Call stop() to stop blocking.</li>
+        </ul>
+
+        <app-git-hub-gist-renderer gist="031a68af1dc2eb19dacc5453fbb7b863"></app-git-hub-gist-renderer>
+
+        <h3>Conclusion</h3>
+
+        <p>
+            This is pretty good UI blocker that I have been using for a while. It has worked well in most normal
+            situations. The only time it leaves something to be desired is when the amount of time spent
+            blocking is really short. In those cases it can appear to just flash which is not optimal. I'd
+            like to add some combination of a configurable delay time, and a configurable fade-in, based on
+            the situation.
+        </p>
+
+        <p>Next time I'll demo how to do the exact same thing in React. That will make a nice comparison. =)</p>
+
+        <p>Questions? Comments? No way to do that yet... except via email. <a href="mailto:blogs@upway2late.com">blogs@upway2late.com</a></p>
+
+    </div>
+</div>

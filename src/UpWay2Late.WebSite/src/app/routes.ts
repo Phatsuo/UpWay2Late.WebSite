@@ -7,6 +7,7 @@ import { DownloadsComponent } from './pages/downloads/downloads.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component'
 
+import { Angular2AndUiBlockingComponent } from './blogs/angular2-and-ui-blocking/angular2-and-ui-blocking.component';
 import { Angular2CliAndDotNetCoreComponent } from './blogs/angular2-cli-and-dot-net-core/angular2-cli-and-dot-net-core.component';
 import { Angular2TemplateWithEmbeddedGistComponent } from './blogs/angular2-template-with-embedded-gist/angular2-template-with-embedded-gist.component';
 
@@ -41,6 +42,10 @@ export const appRoutes: Routes = [
     {
         path: 'blogs/angular2-template-with-embedded-gist',
         component: Angular2TemplateWithEmbeddedGistComponent
+    },
+    {
+        path: 'blogs/angular2-and-ui-blocking',
+        component: Angular2AndUiBlockingComponent
     },
     {
         path: 'projects/buttons-project',
