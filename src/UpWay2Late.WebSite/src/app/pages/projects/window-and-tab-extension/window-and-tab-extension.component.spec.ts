@@ -5,7 +5,7 @@ import { WindowAndTabExtensionComponent } from './window-and-tab-extension.compo
 
 describe('Component: WindowAndTabExtension', () => {
   it('should create an instance', () => {
-    let component = new WindowAndTabExtensionComponent();
+    let component = new WindowAndTabExtensionComponent(null);
     expect(component).toBeTruthy();
   });
 });

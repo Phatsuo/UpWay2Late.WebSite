@@ -5,7 +5,7 @@ import { WinRoboCopyComponent } from './win-robo-copy.component';
 
 describe('Component: WinRoboCopy', () => {
   it('should create an instance', () => {
-    let component = new WinRoboCopyComponent(null);
+    let component = new WinRoboCopyComponent(null, null);
     expect(component).toBeTruthy();
   });
 });

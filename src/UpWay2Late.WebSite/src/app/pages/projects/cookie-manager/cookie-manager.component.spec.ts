@@ -5,7 +5,7 @@ import { CookieManagerComponent } from './cookie-manager.component';
 
 describe('Component: CookieManager', () => {
   it('should create an instance', () => {
-    let component = new CookieManagerComponent();
+    let component = new CookieManagerComponent(null);
     expect(component).toBeTruthy();
   });
 });

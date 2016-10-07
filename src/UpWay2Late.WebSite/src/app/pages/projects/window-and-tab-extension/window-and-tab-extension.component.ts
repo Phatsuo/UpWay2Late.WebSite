@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MetaService } from '../../../services/meta.service';
+
 @Component({
   selector: 'app-window-and-tab-extension',
   templateUrl: './window-and-tab-extension.component.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WindowAndTabExtensionComponent implements OnInit {
 
-  constructor() { }
+    constructor(private metaService: MetaService) { }
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+        this.metaService.setMeta(
+            "Awesome Window and Tab Manager",
+            "The Awesome Window and Tab Manager allows you to manage all Chrome windows and tabs."
+        );
+    }
 }

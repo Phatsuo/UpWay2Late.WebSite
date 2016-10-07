@@ -5,7 +5,7 @@ import { ContactComponent } from './contact.component';
 
 describe('Component: Contact', () => {
   it('should create an instance', () => {
-    let component = new ContactComponent(null);
+    let component = new ContactComponent(null, null);
     expect(component).toBeTruthy();
   });
 });

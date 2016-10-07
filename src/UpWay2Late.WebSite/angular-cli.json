@@ -22,6 +22,7 @@
         "../vendor/kendo/kendo.default.css"
       ],
       "scripts": [
+        "../node_modules/lodash/lodash.min.js",
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
         "../node_modules/dateformat/lib/dateformat.js",

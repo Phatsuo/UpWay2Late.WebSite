@@ -5,7 +5,7 @@ import { PickEmLeaguesComponent } from './pick-em-leagues.component';
 
 describe('Component: PickEmLeagues', () => {
   it('should create an instance', () => {
-    let component = new PickEmLeaguesComponent();
+    let component = new PickEmLeaguesComponent(null);
     expect(component).toBeTruthy();
   });
 });

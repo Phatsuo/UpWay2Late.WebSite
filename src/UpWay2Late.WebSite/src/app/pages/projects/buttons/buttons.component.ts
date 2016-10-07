@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MetaService } from '../../../services/meta.service';
 import { IExtension } from '../../../models/extension';
 
 @Component({
@@ -24,9 +25,13 @@ export class ButtonsComponent implements OnInit {
         { "name": "Awesome Button Bar", "image": "/assets/img/buttons/barButton_128.png", "url": "https://chrome.google.com/webstore/detail/bcmfandagknmpnambbppcpgclkccgigb?hl=en-US", "text": ["The Awesome Button Bar contains all buttons and all options, and adds the option of showing or hiding each button."] }
     ];
 
-    constructor() { }
+    constructor(private metaService: MetaService) { }
 
     ngOnInit() {
+        this.metaService.setMeta(
+            "Buttons Project",
+            "The buttons project is a collection of 12 Google Chrome Extensions."
+        );
     }
 
 }

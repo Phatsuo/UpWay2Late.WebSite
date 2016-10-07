@@ -5,7 +5,7 @@ import { DeliciousExtensionComponent } from './delicious-extension.component';
 
 describe('Component: DeliciousExtension', () => {
   it('should create an instance', () => {
-    let component = new DeliciousExtensionComponent();
+    let component = new DeliciousExtensionComponent(null);
     expect(component).toBeTruthy();
   });
 });

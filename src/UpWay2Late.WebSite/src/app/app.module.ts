@@ -34,9 +34,11 @@ import { GitHubCommitLinkComponent } from './components/git-hub-commit-link/git-
 import { GitHubGistRendererComponent } from './components/git-hub-gist-renderer/git-hub-gist-renderer.component';
 import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { KendoImagePreviewComponent } from './components/kendo-image-preview/kendo-image-preview.component';
+import { LinkedInShareComponent } from './components/linked-in-share/linked-in-share.component';
 import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 
 import { DataService } from './services/data.service';
+import { MetaService } from './services/meta.service';
 import { UtilsService } from './services/utils.service';
 
 import { appRoutes } from './routes';
@@ -80,7 +82,8 @@ import 'rxjs/add/operator/toPromise';
         GitHubGistRendererComponent,
         JumbotronComponent,
         KendoImagePreviewComponent,
-        ResponsiveImageComponent
+        LinkedInShareComponent,
+        ResponsiveImageComponent, LinkedInShareComponent
     ],
     imports: [
         BrowserModule,
@@ -90,6 +93,7 @@ import 'rxjs/add/operator/toPromise';
     ],
     providers: [
         DataService,
+        MetaService,
         UtilsService
     ],
     bootstrap: [AppComponent]

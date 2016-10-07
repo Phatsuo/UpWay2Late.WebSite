@@ -5,7 +5,7 @@ import { ButtonsComponent } from './buttons.component';
 
 describe('Component: Buttons', () => {
   it('should create an instance', () => {
-    let component = new ButtonsComponent();
+    let component = new ButtonsComponent(null);
     expect(component).toBeTruthy();
   });
 });

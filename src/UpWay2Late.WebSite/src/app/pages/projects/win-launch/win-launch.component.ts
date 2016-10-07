@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MetaService } from '../../../services/meta.service';
+
 @Component({
   selector: 'app-win-launch',
   templateUrl: './win-launch.component.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WinLaunchComponent implements OnInit {
 
-  constructor() { }
+    constructor(private metaService: MetaService) { }
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+        this.metaService.setMeta(
+            "WinLaunch",
+            "WinLaunch is a Windows 7, 8, or 10 power user's application and task launch bar."
+        );
+    }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MetaService } from '../../../services/meta.service';
 import { UtilsService } from '../../../services/utils.service';
 
 import { IVersion } from '../../../models/version';
@@ -28,9 +29,15 @@ export class WinRoboCopyComponent implements OnInit {
         { "version": "1.0.4139.5437", "filename": "WinRoboCopy-Setup-20110502.zip", "revision": "9", "date": new Date("5/2/2011"), "text": ["Original Release."] }
     ];
 
-    constructor(private utilsService: UtilsService) { }
+    constructor(
+        private metaService: MetaService,
+        private utilsService: UtilsService
+    ) { }
 
     ngOnInit() {
+        this.metaService.setMeta(
+            "WinRoboCopy",
+            "WinRoboCopy is a GUI front end for RoboCopy."
+        );
     }
-
 }

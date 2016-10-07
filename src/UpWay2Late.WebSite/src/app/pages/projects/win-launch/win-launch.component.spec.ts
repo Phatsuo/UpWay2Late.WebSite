@@ -5,7 +5,7 @@ import { WinLaunchComponent } from './win-launch.component';
 
 describe('Component: WinLaunch', () => {
   it('should create an instance', () => {
-    let component = new WinLaunchComponent();
+    let component = new WinLaunchComponent(null);
     expect(component).toBeTruthy();
   });
 });

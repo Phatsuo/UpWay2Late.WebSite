@@ -5,7 +5,7 @@ import { DownloadsComponent } from './downloads.component';
 
 describe('Component: Downloads', () => {
   it('should create an instance', () => {
-    let component = new DownloadsComponent(null);
+    let component = new DownloadsComponent(null, null);
     expect(component).toBeTruthy();
   });
 });

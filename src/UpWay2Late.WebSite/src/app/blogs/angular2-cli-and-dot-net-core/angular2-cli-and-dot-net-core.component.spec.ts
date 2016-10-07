@@ -5,7 +5,7 @@ import { Angular2CliAndDotNetCoreComponent } from './angular2-cli-and-dot-net-co
 
 describe('Component: Angular2CliAndDotNetCore', () => {
   it('should create an instance', () => {
-    let component = new Angular2CliAndDotNetCoreComponent();
+    let component = new Angular2CliAndDotNetCoreComponent(null);
     expect(component).toBeTruthy();
   });
 });

@@ -5,7 +5,7 @@ import { GoogleExtensionComponent } from './google-extension.component';
 
 describe('Component: GoogleExtension', () => {
   it('should create an instance', () => {
-    let component = new GoogleExtensionComponent();
+    let component = new GoogleExtensionComponent(null);
     expect(component).toBeTruthy();
   });
 });

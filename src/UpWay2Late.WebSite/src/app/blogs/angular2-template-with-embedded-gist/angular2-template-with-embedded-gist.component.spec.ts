@@ -5,7 +5,7 @@ import { Angular2TemplateWithEmbeddedGistComponent } from './angular2-template-w
 
 describe('Component: Angular2TemplateWithEmbeddedGist', () => {
   it('should create an instance', () => {
-    let component = new Angular2TemplateWithEmbeddedGistComponent();
+    let component = new Angular2TemplateWithEmbeddedGistComponent(null);
     expect(component).toBeTruthy();
   });
 });

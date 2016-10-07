@@ -5,7 +5,7 @@ import { WinRoboCopyScheduleComponent } from './win-robo-copy-schedule.component
 
 describe('Component: WinRoboCopySchedule', () => {
   it('should create an instance', () => {
-    let component = new WinRoboCopyScheduleComponent();
+    let component = new WinRoboCopyScheduleComponent(null);
     expect(component).toBeTruthy();
   });
 });

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MetaService } from '../../../../services/meta.service';
+
 @Component({
   selector: 'app-win-robo-copy-scripts',
   templateUrl: './win-robo-copy-scripts.component.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WinRoboCopyScriptsComponent implements OnInit {
 
-  constructor() { }
+    constructor(private metaService: MetaService) { }
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+        this.metaService.setMeta(
+            "WinRoboCopy - Scripts",
+            "WinRoboCopy is a GUI front end for RoboCopy. It can also supports executing pre-RoboCopy scripts and/or a post-RoboCopy scripts."
+        );
+    }
 }

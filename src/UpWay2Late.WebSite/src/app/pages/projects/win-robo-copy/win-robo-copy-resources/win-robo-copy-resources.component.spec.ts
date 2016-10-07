@@ -5,7 +5,7 @@ import { WinRoboCopyResourcesComponent } from './win-robo-copy-resources.compone
 
 describe('Component: WinRoboCopyResources', () => {
   it('should create an instance', () => {
-    let component = new WinRoboCopyResourcesComponent();
+    let component = new WinRoboCopyResourcesComponent(null);
     expect(component).toBeTruthy();
   });
 });

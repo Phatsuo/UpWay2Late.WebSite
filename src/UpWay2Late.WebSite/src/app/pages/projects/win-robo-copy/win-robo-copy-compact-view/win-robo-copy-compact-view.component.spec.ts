@@ -5,7 +5,7 @@ import { WinRoboCopyCompactViewComponent } from './win-robo-copy-compact-view.co
 
 describe('Component: WinRoboCopyCompactView', () => {
   it('should create an instance', () => {
-    let component = new WinRoboCopyCompactViewComponent();
+    let component = new WinRoboCopyCompactViewComponent(null);
     expect(component).toBeTruthy();
   });
 });

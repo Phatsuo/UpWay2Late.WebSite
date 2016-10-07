@@ -11,8 +11,15 @@ html, body {
     font-weight: bolder;
 }
 
-.twitter-li {
+.linked-in-li {
+    padding-top: 15px;
+    padding-left: 10px;
+    min-width: 110px;
+}
+
+.twitter-li {    
     padding-top: 11px;
+    padding-left: 10px;
 }
 
 .lined-grid div.row { 

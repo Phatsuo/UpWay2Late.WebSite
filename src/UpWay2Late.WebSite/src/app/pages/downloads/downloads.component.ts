@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MetaService } from '../../services/meta.service';
 import { UtilsService } from '../../services/utils.service';
 
 import { IDownload } from '../../models/download';
@@ -10,7 +11,7 @@ import { IDownload } from '../../models/download';
   styleUrls: ['./downloads.component.css']
 })
 export class DownloadsComponent implements OnInit {
-
+    
     // todo: move to database
     public downloads: Array<IDownload> = [
         { "date": new Date("4/10/2016"), "fileName": "WinLaunch.Setup.1.0.5944.19441.exe", "downloadName": "WinLaunch 1.0.5944.19441 Setup", "size": "2,892k", "url": "http://upway2late.azureedge.net/WinLaunch.Setup.1.0.5944.19441.exe" },
@@ -18,9 +19,15 @@ export class DownloadsComponent implements OnInit {
         { "date": new Date("4/19/2016"), "fileName": "WinRoboCopy-Setup-1.3.5953.40896.zip", "downloadName": "WinRoboCopy 1.3.5953.40896 Setup", "size": "2,321k", "url": "http://upway2late.azureedge.net/WinRoboCopy-Setup-1.3.5953.40896.zip" }
     ];
 
-    constructor(private utilsService: UtilsService) { }
+    constructor(
+        private utilsService: UtilsService,
+        private metaService: MetaService
+    ) { }
 
     ngOnInit() {
+        this.metaService.setMeta(
+            "UpWay2Late.com Downloads",
+            "UpWay2Late.com downloads links."
+        );
     }
-
 }

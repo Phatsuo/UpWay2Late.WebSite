@@ -5,7 +5,7 @@ import { PrivacyComponent } from './privacy.component';
 
 describe('Component: Privacy', () => {
   it('should create an instance', () => {
-    let component = new PrivacyComponent();
+    let component = new PrivacyComponent(null);
     expect(component).toBeTruthy();
   });
 });
