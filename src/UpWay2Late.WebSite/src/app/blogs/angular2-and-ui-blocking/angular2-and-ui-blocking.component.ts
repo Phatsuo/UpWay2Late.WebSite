@@ -16,7 +16,7 @@ export class Angular2AndUiBlockingComponent implements OnInit {
     ngOnInit() {
         this.metaService.setMeta(
             this.title,
-            "How to add UI blocking to an Angular application."
+            "How to add UI blocking to an Angular 2 application."
         );
     }
 }

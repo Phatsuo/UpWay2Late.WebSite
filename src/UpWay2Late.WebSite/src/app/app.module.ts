@@ -15,6 +15,7 @@ import { PrivacyComponent } from './pages/privacy/privacy.component'
 import { Angular2AndUiBlockingComponent } from './blogs/angular2-and-ui-blocking/angular2-and-ui-blocking.component';
 import { Angular2CliAndDotNetCoreComponent } from './blogs/angular2-cli-and-dot-net-core/angular2-cli-and-dot-net-core.component';
 import { Angular2TemplateWithEmbeddedGistComponent } from './blogs/angular2-template-with-embedded-gist/angular2-template-with-embedded-gist.component';
+import { ReactAndUiBlockingComponent } from './blogs/react-and-ui-blocking/react-and-ui-blocking.component';
 
 import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
 import { CookieManagerComponent } from './pages/projects/cookie-manager/cookie-manager.component';
@@ -62,6 +63,7 @@ import 'rxjs/add/operator/toPromise';
         Angular2AndUiBlockingComponent,
         Angular2CliAndDotNetCoreComponent,
         Angular2TemplateWithEmbeddedGistComponent,
+        ReactAndUiBlockingComponent,
         // projects
         ButtonsComponent,
         CookieManagerComponent,
@@ -85,7 +87,7 @@ import 'rxjs/add/operator/toPromise';
         JumbotronComponent,
         KendoImagePreviewComponent,
         LinkedInShareComponent,
-        ResponsiveImageComponent
+        ResponsiveImageComponent        
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,182 @@
+<app-jumbotron headline="Blogs/" text="Software development. And stuff." image="keyboard-2.png"></app-jumbotron>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{title}}</h3>
+    </div>
+    <div class="panel-body">
+
+        <p>October 13, 2016</p>
+
+        <h3>Introduction</h3>
+
+        <p>
+            This week I am presenting what I think will be a pretty quick walk though on how to add UI Blocking
+            to a React application. The classic use-case for this feature is blocking the UI from user input
+            while some long running task, like an AJAX call, is taking place. We have two goals here. (1) Keep the
+            user from taking further action until the long running task completes, and (2) make sure the user is
+            informed as to why they are just sitting there doing nothing.
+        </p>
+
+        <p>
+            Last time, we did the same thing for <a href="/#/blogs/angular2-and-ui-blocking">Angular 2</a> applications.
+        </p>
+
+        <p>
+            This code produces an effect where the web page remains visible but is slightly grayed out, and
+            a message and spinning gif are centered on the screen. Example:
+        </p>
+
+        <app-responsive-image fileName="blog/4/blocked.png"></app-responsive-image>
+
+        <p>
+            Hey, shameless plug... that's from my React project, <a target="_blank" href="https://www.pickemleagues.com/">www.pickemleagues.com</a>.
+            The website is for running NFL Pick Em leagues and Elimination leagues.
+        </p>
+
+        <p>
+            You could win $100 just by trying it out! <a target="_blank" href="https://www.pickemleagues.com/#/inviteVerify?g=ebd95657-c1fe-43d1-9c04-8b16e3505b08">EASY MONEY</a>.
+        </p>
+
+        <h3>Tools</h3>
+
+        <ul>
+            <li>TypeScript 2.0.2</li>
+            <li>React 15.3.0</li>
+            <li>React-Redux 4.4.5</li>
+            <li>Redux 3.5.2</li>
+        </ul>
+
+        <h3>Step 1: Must Have: A Cool Spinner Gif</h3>
+
+        <p>
+            A cool spinner gif lets the user know important things are happening. We could just SAY important things
+            are happening - and we will - but the gif really drives it home. Here's my current favorite site for acquiring
+            such a gif, complete with custom colors and everything.
+        </p>
+
+        <p>
+            <a target="_blank" href="http://loading.io/">loading.io</a>
+        </p>
+
+        <p>
+            Create a nice spinner and save it somewhere local to your website (example: /img/box.gif).
+        </p>
+
+        <span class="spinner-span">
+            <img src="/assets/img/blog/4/box.gif" />
+        </span>
+
+        <h3>Step 2: Create a UI Blocking Component</h3>
+
+        <p>
+            We need to create a UI blocking component. This piece is basically the HTML chunk that will be displayed
+            when we block the user interface. This is a really basic example but the important feature here is that
+            in addition to the displaying the spinner gif, we are adding a message.
+        </p>
+
+        <p>
+            This is a React stateless functional component. If unfamiliar, more can read be about these
+            <a target="_blank" href="https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.r4pxqq95k">here</a>.
+            The component returns null when not blocking, or the blocking HTML when it is blocking. This example is also using
+            Redux-React to bind the state to the components props. We'll be looking at the state in just a minute.
+        </p>
+
+        <app-git-hub-gist-renderer gist="6d1fc88811f3e36087dcd17a871df24f"></app-git-hub-gist-renderer>
+
+        <p>NOTE: The "in" and "modal-backdrop" css classes are from bootstrap.</p>
+
+        <h3>Step 3: Add the CSS</h3>
+
+        <p>
+            One of the Angular 2 features I miss in React is having a separate CSS file specifically for each component.
+            Over here in React land, we don't have that. We need to add some CSS for the component. In this example,
+            I have an app.css file that is accessible to the entire application.
+        </p>
+
+        <app-git-hub-gist-renderer gist="32b7985e806fd67e93e700b7e7c319dd"></app-git-hub-gist-renderer>
+
+        <h3>Step 4: Add Blocking to the State Contract</h3>
+
+        <p>
+            In React, everything that changes in the application is represented in the application's single state object.
+            The UI blocker is no different. I have a TypeScript interface that defines my state contract. Here I
+            add the state needed for the blocking component as IBlockUiState, and then I add that to the overall
+            state contract.
+        </p>
+
+        <app-git-hub-gist-renderer gist="e8d78406f006d575d1013359d1e32f81"></app-git-hub-gist-renderer>
+
+        <h3>Step 5: Adding a Blocking Action</h3>
+
+        <p>
+            With Redux, we define actions that are used to trigger state changes within the application.
+            We add 3 things for every action.
+        </p>
+
+        <ul>
+            <li>A string constant which represents the action. This will be used in the action creator and in the reducer. (we don't want any magic strings laying around)</li>
+            <li>An interface that the action conforms to.</li>
+            <li>A function that returns the action (called the action creator).</li>
+        </ul>
+
+        <app-git-hub-gist-renderer gist="b256cb1343a40b86febd622949a98749"></app-git-hub-gist-renderer>
+
+        <p>
+            If you want to delve more into Redux and React,
+            <a target="_blank" href="http://redux.js.org/docs/basics/UsageWithReact.html">the docs</a>
+            are a great place to start.
+        </p>
+
+        <h3>Step 6: Modify the Reducer</h3>
+
+        <p>The reducer is a pure function that accepts actions, and creates a new state object with the requested changes.</p>
+
+        <p>Note the incrementing and decrementing of the 'blockedCount' variable - this let's us nest calls to the blocker.</p>
+
+        <app-git-hub-gist-renderer gist="45ff51bbd7a1c3dd8eadb9454ef7f25a"></app-git-hub-gist-renderer>
+
+        <h3>Step 7: Add UI Blocking Component to Top Level Component</h3>
+
+        <p>
+            A React application typically has one top level component, but there could be several (one per page).
+            We need to add the UI Blocker such that it is always present, which means adding it to every top level
+            component. In my example there is only one top level component, App.tsx.
+        </p>
+
+        <app-git-hub-gist-renderer gist="d7c4b1b9253dd8dd401c104e3bd8a404"></app-git-hub-gist-renderer>
+
+        <h3>Step 8: Block Some UI!</h3>
+
+        <p>Now we can block UI from any component in the component tree, following these steps:</p>
+
+        <ul>
+            <li>Import IAction and blockUi from actions.</li>
+            <li>Use connect() from react-redux adds dispatch() to the component's props.</li>
+            <li>Call props.dispatch(blockUi(true, message) to start blocking.</li>
+            <li>Call props.dispatch(blockUi(false, "") to stop blocking.</li>
+        </ul>
+
+        <app-git-hub-gist-renderer gist="42b76e64f99671dc6ecc72f6cec60d9e"></app-git-hub-gist-renderer>
+
+        <h3>Conclusion</h3>
+
+        <p>
+            Compared to Angular 2, it feels like a bit more work here in React land. In fact, I know it
+            is because I have 8 steps here compared to 6 for Angular 2. =) That's the general feeling I
+            get doing a lot of things in React - features take a little more time to write. Gradually I have
+            gotten used to that aspect, and after a while, writing new actions and reducers becomes
+            second nature.
+        </p>
+
+        <p>
+            In theory, this state loop can make your application more predictable. In general I agree -
+            but it's not as if this is some magic bullet that will fix all your design problems. I like both React
+            and Angular 2. I'd like to get into a full blown comparison of the two, but there are already a number
+            of such articles out there. Both are good, and I wouldn't automatically recommend one over the other -
+            without first reviewing an application's requirements and the development team's preferences and capabilities.
+        </p>
+
+        <p>Questions? Comments? No way to do that yet... except via email. <a href="mailto:blogs@upway2late.com">blogs@upway2late.com</a></p>
+
+    </div>
+</div>

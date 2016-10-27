@@ -7,6 +7,8 @@
 
         <p>September 21, 2016</p>
 
+        <p>Updated: October 13, 2016</p>
+
         <h3>Introduction</h3>
         
         <p>
@@ -28,8 +30,8 @@
             <li>GitHub Extension for Visual Studio 2.0.14.2</li>
             <li>TypeScript 2.0.2</li>
             <li>GitBash (or other command line)</li>
-            <li>Angular 2 RTM</li>
-            <li>Angular CLI Beta 15</li>
+            <li>Angular 2 2.1.0</li>
+            <li>Angular CLI Beta 17</li>
             <li>Node 6.6.0</li>
             <li>npm 3.10.3</li>
         </ul>
@@ -95,7 +97,7 @@
 
         <p class="console">
             $ ng --version<br />
-            angular-cli: 1.0.0-beta.15<br />
+            angular-cli: 1.0.0-beta.17<br />
             node: 6.6.0<br />
             os: win32 x64<br />
         </p>
@@ -358,9 +360,10 @@ wwwroot/
         <p>Now we can use the Angular 2 CLI to create the model, service, and page component.</p>
 
         <p>
-            Quick note here, the directions in the Angular 2 CLI for creating files in alternate directories
-            <a target="_blank" href="https://github.com/angular/angular-cli/issues/1639">do not work</a>. What
-            follows is a workaround that almost works, but we will have to make a small change in the app module.
+            Quick note here, some of the Angular 2 CLI directions for creating files in alternate directories
+            <a target="_blank" href="https://github.com/angular/angular-cli/issues/1639">do not work</a>. If you specify
+            the path on the command line, that works fine. If you happen to be using GitBash and navigate to the directory
+            first, that will not work as noted in that GitHub case.
         </p>
 
         <p>
@@ -374,30 +377,20 @@ wwwroot/
         <p>This command creates our service in \src\app\services\data.service.ts. And the CLI will tell you it does not PROVIDE the service. We'll do that in a minute.</p>
 
         <p class="console">
-            $ ng g service services//data
+            $ ng g service services/data
         </p>
 
         <p>This command creates our news model in \src\app\models\news.ts.</p>
 
         <p class="console">
-            $ ng g interface models//news
+            $ ng g interface models/news
         </p>
 
         <p>This command creates our news component in \src\app\pages\news\news.component.ts (plus html and css files as well).</p>
 
         <p class="console">
-            $ ng g component pages//news
+            $ ng g component pages/news
         </p>
-
-        <h4>app.module.ts</h4>
-
-        <p>Now here's the issue with the workaround I mentioned. For the news component, we see this in the app.module.ts.</p>
-
-        <pre>import {{ '{' }} NewsComponent } from './pages\news/news.component';</pre>
-
-        <p>See the backslash? That needs to be fixed.</p>
-
-        <pre>import {{ '{' }} NewsComponent } from './pages/news/news.component';</pre>
 
         <p>
             The Angular 2 CLI also added the NewsComponent to the declarations in our App module (app.module.ts). It did not,
