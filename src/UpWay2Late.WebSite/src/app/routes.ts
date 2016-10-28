@@ -10,6 +10,7 @@ import { PrivacyComponent } from './pages/privacy/privacy.component'
 import { Angular2AndUiBlockingComponent } from './blogs/angular2-and-ui-blocking/angular2-and-ui-blocking.component';
 import { Angular2CliAndDotNetCoreComponent } from './blogs/angular2-cli-and-dot-net-core/angular2-cli-and-dot-net-core.component';
 import { Angular2TemplateWithEmbeddedGistComponent } from './blogs/angular2-template-with-embedded-gist/angular2-template-with-embedded-gist.component';
+import { DotNetCoreConsoleAppsComponent } from './blogs/dot-net-core-console-apps/dot-net-core-console-apps.component';
 import { ReactAndUiBlockingComponent } from './blogs/react-and-ui-blocking/react-and-ui-blocking.component';
 
 import { ButtonsComponent } from './pages/projects/buttons/buttons.component';
@@ -47,6 +48,10 @@ export const appRoutes: Routes = [
     {
         path: 'blogs/angular2-and-ui-blocking',
         component: Angular2AndUiBlockingComponent
+    },
+    {
+        path: 'blogs/dot-net-core-console-apps',
+        component: DotNetCoreConsoleAppsComponent
     },
     {
         path: 'blogs/react-and-ui-blocking',

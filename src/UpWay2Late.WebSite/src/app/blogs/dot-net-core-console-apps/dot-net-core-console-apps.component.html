@@ -1,0 +1,281 @@
+<app-jumbotron headline="Blogs/" text="Software development. And stuff." image="keyboard-2.png"></app-jumbotron>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{title}}</h3>
+    </div>
+    <div class="panel-body">
+
+        <p>October 26, 2016</p>
+
+        <h3>Introduction</h3>
+
+        <p>
+            I recently spent some time writing several console applications for one of my projects. A few of the libraries
+            these applications had to access were written in .NET Core, so it made sense to use .NET Core for the console
+            applications themselves. There are quite a few differences between a .NET Core application and a .NET 4.6.1
+            application. We have new things in configuration, command line parameters, and especially deployment.
+            Let's take a peek, shall we!
+        </p>
+
+        <p>
+            The entire solution for this sample console application is available on <a target="_blank" href="https://github.com/Phatsuo/UpWay2Late.Blog.ConsoleApp">GitHub</a>.
+        </p>
+
+        <h3>Tools</h3>
+
+        <ul>
+            <li>Visual Studio 2015, Version 14.0.25425.01 Update 3</li>
+        </ul>
+
+        <h3>Step 1: Create Visual Studio Solution</h3>
+
+        <p>
+            Create a new Visual Studio solution, selecting .NET Core, and Console Application (.NET Core). I also used the
+            option to have Visual Studio create my git repository.
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/5/NewProject.png" />
+
+        <h3>Step 2: Hello World!</h3>
+
+        <p>
+            After adding a few console commands, we have the standard Hello World application.
+            No surprises yet, and this runs as expected.
+        </p>
+
+        <app-git-hub-gist-renderer gist="52cdada5e2bd18238dd68379a4757118"></app-git-hub-gist-renderer>
+
+        <img class="img-responsive" src="/assets/img/blog/5/HelloWorld.png" />
+
+        <h3>Step 3: Configuration</h3>
+
+        <img class="img-responsive" src="/assets/img/blog/5/NoAppConfig.png" />
+
+        <p>
+            Yes, dude, there is no more App.config. Let's add one, and use json! Right-click the project and select 'Add' and then select 'New Item...'
+        </p>
+
+        <p>
+            In the dialog, select .NET Core, and then JSON file. Name the new file appsettings.json.
+            Note: the actual file name used does not matter. This is just an example.
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/5/NewJsonFile.png" />
+
+        <p>
+            In our new file, let's add a setting that we can read from the file.
+        </p>
+
+        <app-git-hub-gist-renderer gist="422acff0550aa802c3412fdb8541f2e2"></app-git-hub-gist-renderer>
+
+        <p>
+            And finally lets update the program to read and use the setting.
+        </p>
+
+        <p>
+            Add Microsoft.Extensions.Configuration.FileExtensions and Microsoft.Extensions.Configuration.Json
+            to the dependencies section in the projects project.json file.
+        </p>
+
+        <app-git-hub-gist-renderer gist="7b11d1aff6dd9a961c3834fcb974c7e1"></app-git-hub-gist-renderer>
+
+        <p>
+            Add the following code to read the setting from appsettings.json - and say hello to an all new world!
+        </p>
+
+        <app-git-hub-gist-renderer gist="2c2c9f22dbdc975ec190fdaa89ac23a8"></app-git-hub-gist-renderer>
+
+        <img class="img-responsive" src="/assets/img/blog/5/HelloMars.png" />
+
+        <h3>Step 4: Command Line Arguments</h3>
+
+        <p>
+            This step is optional. It's possible to process command line options just like we always did - which
+            essentially means manually. But we don't have to do that anymore, and this slick new MS extension library
+            adds some very easy to use features. I'm just going to scratch the surface here and make you aware of this library.
+        </p>
+
+        <p>Install Microsoft.Extensions.CommandLineUtils using the package manager.</p>
+
+        <pre>Install-Package Microsoft.Extensions.CommandLineUtils -Pre</pre>
+
+        <p>
+            Now we can add the following code, which will allow us to specify on the command line whether to say hello or goodbye.
+        </p>
+
+        <app-git-hub-gist-renderer gist="c7d47f3c58bf7b62ed4babaa0d8f6fee"></app-git-hub-gist-renderer>
+
+        <p>
+            The first feature this delivers is a documentation page when we run the app with no commands.
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/5/CommandLineHelp.png" />
+
+        <p>
+            Right click the project and select Properties, and go to the Debug tab. Command line arguments
+            can be added to the Application Arguments text box.
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/5/AppProperties.png" />
+
+        <p>
+            When saving the project, that will generate a launchSettings.json file within the project
+            that contains the argument. Moving forward, this file can be edited instead of going to the
+            project properties tab.
+        </p>
+
+        <app-git-hub-gist-renderer gist="fc1949eb84b527376b00e06f7965f4ee"></app-git-hub-gist-renderer>
+
+        <p>
+            And now if we run with goodbye on the command line, we can say goodbye from a Hello World app.
+            What is going on! Everything is crazy.
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/5/GoodbyeMars.png" />
+
+        <h3>Step 5: Going Async</h3>
+
+        <p>
+            This is not new - it's the exact same problem that existed in previous .NET versions, but let's
+            fix it quickly anyway. Main is not an async method. This will present a problem the minute
+            we need to call any async code.
+        </p>
+
+        <p>
+            Here's the easy fix for this. I refactored the application code into an asynchronous method named
+            RunApplicationAsync(), added a MainAsync(). Now I can call the new async method thusly:
+        </p>
+
+        <app-git-hub-gist-renderer gist="7b8315ce576c65821a687b5615e243ca"></app-git-hub-gist-renderer>
+
+        <p>
+            Note: thusly... it's a word. I looked it up and everything.
+        </p>
+
+        <h3>Step 6: Build for Deployment</h3>
+
+        <p>
+            Now we want to build and deploy the application, and here is where things take the biggest departure
+            from .NET 4.6. You might think you are about to navigate to /bin/Debug or /bin/Release and copy the
+            executable file over to a dev or production server. If we look in there now, this is what we will find:
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/5/DotNetCoreDebugFolder.png" />
+
+        <p>
+            There is no executable file. If we want to execute UpWay2Late.Blog.ConsoleApp.dll on a system that has
+            .NET Core installed, we can do that using the
+            <a target="_new" href="https://docs.microsoft.com/en-us/dotnet/articles/core/tools/">.NET Core CLI</a>:
+            (note that the appsettings.json must be present in the directory)
+        </p>
+
+        <p class="console">
+            D:\Dev\...\netcoreapp1.0>dotnet UpWay2Late.Blog.ConsoleApp.dll hello<br />
+            Hello Mars!<br />
+            <br />
+            <br />
+            D:\Dev\...\netcoreapp1.0>dotnet UpWay2Late.Blog.ConsoleApp.dll goodbye<br />
+            Goodbye Mars!<br />
+            <br />
+        </p>
+
+        <p>
+            But that's no fun - we want to use the multi-platform capabilities of .NET Core, and run this as a standalone
+            application, somewhere else, like on a Mac.
+        </p>
+
+        <p>
+            I have been basically following the deployment directions
+            <a target="_new" href="https://docs.microsoft.com/en-us/dotnet/articles/core/deploying/">here</a>
+            to create self contained deployments. For this sample, I am changing the framework from "netcoreapp1.0" to "netstandard1.6".
+        </p>
+        <p>
+            What does that mean? It means this app will be using a smaller subset of .NET Core.
+        </p>
+        <p>
+            <b>netcoreapp1.0</b> contains <i>".NET Core CLR, the .NET Core Library, and a number of other system components."</i>
+        </p>
+        <p>
+            <b>netstandard1.6</b> is <i>"a formal specification of .NET APIs that are intended to be available on all .NET runtimes."</i>.
+        </p>
+        <p>
+            Full docs on the .NET Standard Library
+            can be found <a target="_new" href="https://docs.microsoft.com/en-us/dotnet/articles/standard/library">here</a>.
+        </p>
+
+        <p>
+            We also need to add the runtimes we are going to want to support. For this demo we're doing "win10-x64" and "osx.10.12-x64".
+            These are called .NET Core Runtime Identifiers, or RIDs. The full catalog of available RIDs can be found
+            <a target="_new" href="https://docs.microsoft.com/en-us/dotnet/articles/core/rid-catalog">here</a>.
+        </p>
+
+        <p>
+            All this is done in the project.json file. Here's the new version:
+        </p>
+
+        <app-git-hub-gist-renderer gist="4912cc977ef6d40b8cdd14f405989b0e"></app-git-hub-gist-renderer>
+
+        <p>
+            We need a build file to do the build and publish. I've been handling this by adding a file called
+            build.cmd to the Visual Studio project. I also installed the <a target="_new" href="https://visualstudiogallery.msdn.microsoft.com/4e84e2cf-2d6b-472a-b1e2-b84932511379">Open Command Line</a>
+            Visual Studio extension, which allows me to right click and run the file right from the Solution Explorer. So handy!
+        </p>
+
+        <p>
+            I also have the build file deploying the appsettings.json file.
+        </p>
+
+        <p>Here's the file:</p>
+
+        <app-git-hub-gist-renderer gist="d3d6896b36212a623a82578e75f1ea5a"></app-git-hub-gist-renderer>
+
+        <p>
+            After executing that command, we have one directory under \bin\release\netstandard1.6\ for each runtime.
+            In each of those is a publish subdirectory. Each publish subdirectory contains all the files needed to
+            run the app on the target operating system - including all .NET Core files.
+        </p>
+
+        <p>
+            On Windows, we find the UpWay2Late.Blog.ConsoleApp.exe file - running that runs the application.
+        </p>
+
+        <p>
+            After copying the osx.10.12-x64 files to the Mac, we just need to find the executable
+            (in this case it is simply UpWay2Late.Blog.ConsoleApp with no extension), and tell OSX that this file is executable.
+        </p>
+
+        <p class="console">
+            chmod +x ./UpWay2Late.Blog.ConsoleApp
+        </p>
+
+        <p>
+            And then we can run it!
+        </p>
+
+        <img class="img-responsive" src="/assets/img/blog/5/HelloOnMac.png" />
+
+        <p>
+            Again, the entire solution for this sample console application is available on <a target="_blank" href="https://github.com/Phatsuo/UpWay2Late.Blog.ConsoleApp">GitHub</a>.
+        </p>
+
+        <h3>Conclusion</h3>
+
+        <p>
+            IMO, these are all big wins here. I like using json config files with the applications, and beyond that, you can use
+            practically whatever format you want, and using multiple files is easy as well. The command line tools are super handy,
+            I will definitely be using those whenever I can.
+        </p>
+
+        <p>
+            Besides being just plain cool, and generally useful, deploying console apps to *nix environments could
+            potentially be a big win as running them is cheaper than running Windows machines. Of course the
+            potential problem is that every library you need must be capable of running on the target machine -
+            and that's far from guaranteed at this point. But it is awesome to see MS
+            moving in this direction. There is somewhat of a learning curve involved in understanding how to build and
+            deploy for each platform... but at least it gives us all something to blog about. =)
+        </p>
+
+        <p>Questions? Comments? No way to do that yet... except via email. <a href="mailto:blogs@upway2late.com">blogs@upway2late.com</a></p>
+
+    </div>
+</div>

@@ -16,6 +16,7 @@ namespace UpWay2Late.WebSite.Controllers
 
         // todo: move to a database.
         private static News[] News = {
+            new News { Date = DateTimeFromString("10/26/2016"), Text = "New blog post - What's New With .Net Core Console Apps" },
             new News { Date = DateTimeFromString("10/13/2016"), Text = "New blog post - React Applications with UI Blocking" },
             new News { Date = DateTimeFromString("10/6/2016"), Text = "New blog post - Angular 2 Applications with UI Blocking" },
             new News { Date = DateTimeFromString("9/28/2016"), Text = "New blog post - Angular 2 Templates with Embedded Gists" },
