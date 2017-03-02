@@ -9,7 +9,7 @@ import { MetaService } from '../../services/meta.service';
 })
 export class DotNetCoreConsoleAppsComponent implements OnInit {
 
-    title: string = "What's New With .Net Core Console Apps";
+    title: string = "What's New With .NET Core Console Apps";
 
     constructor(private metaService: MetaService) { }
 
